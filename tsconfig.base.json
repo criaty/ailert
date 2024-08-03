@@ -1,19 +1,30 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
+    /* Compiler options */
+    "noEmit": true, // Vite will handle the output of the files
+    "module": "ESNext",
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* Optimization options */
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "importHelpers": true, // Use tslib to reduce the size of the output files. tslib should be added to the package.json file with npm i tslib
+
+    /* Linting options */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Module Resolution Options */
     "baseUrl": ".",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    /* Custom library aliases */
     "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
