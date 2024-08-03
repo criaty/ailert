@@ -1,18 +1,11 @@
 {
-  "database": {
-    "rules": "apps/firebase/criaty-ailert/database.rules.json"
-  },
   "firestore": {
     "rules": "apps/firebase/criaty-ailert/firestore.rules",
     "indexes": "apps/firebase/criaty-ailert/firestore.indexes.json"
-  },    
+  },
   "hosting": {
-    "public": "apps/firebase/criaty-ailert/public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "public": "dist/apps/ailert",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
@@ -21,7 +14,7 @@
     ]
   },
   "storage": {
-      "rules": "apps/firebase/criaty-ailert/storage.rules"
+    "rules": "apps/firebase/criaty-ailert/storage.rules"
   },
   "functions": [],
   "emulators": {
