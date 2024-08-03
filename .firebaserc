@@ -1,4 +1,16 @@
 {
-  "projects": {},
-  "targets": {}
+  "projects": {
+    "prod": "criaty-ailert"
+  },
+  "targets": {
+    "criaty-ailert": {
+      "hosting": {
+        "ailert": [
+          "criaty-ailert"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
