@@ -31,6 +31,14 @@
   "storage": {
     "rules": "apps/firebase/criaty-ailert/storage.rules"
   },
+  "functions": [
+    {
+      "codebase": "firebase-criaty-ailert-functions",
+      "source": "dist/apps/firebase/criaty-ailert-functions",
+      "runtime": "nodejs20",
+      "ignore": ["*.local"]
+    }
+  ],
   "emulators": {
     "auth": {
       "port": 9099

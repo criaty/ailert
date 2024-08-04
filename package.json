@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "build": "nx build ailert && nx build firebase-criaty-ailert && nx build firebase-criaty-ailert-functions",
     "deploy": "nx deploy firebase-criaty-ailert",
     "deploy-hosting": "nx deploy firebase-criaty-ailert -- --only hosting:ailert"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "firebase": "10.12.3",
     "firebase-admin": "12.2.0",
@@ -16,6 +17,7 @@
     "tslib": "2.3.0"
   },
   "devDependencies": {
+    "@nx/esbuild": "19.5.6",
     "@nx/eslint": "19.5.6",
     "@nx/eslint-plugin": "19.5.6",
     "@nx/jest": "19.5.6",
@@ -40,6 +42,7 @@
     "@vitejs/plugin-react": "4.3.1",
     "@vitest/ui": "1.6.0",
     "babel-jest": "29.4.1",
+    "esbuild": "0.19.2",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
@@ -50,6 +53,7 @@
     "firebase-tools": "13.13.0",
     "jest": "29.4.1",
     "jest-environment-jsdom": "29.4.1",
+    "jest-environment-node": "29.7.0",
     "jsdom": "24.1.0",
     "kill-port": "2.0.1",
     "nx": "19.5.6",

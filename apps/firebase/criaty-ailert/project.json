@@ -71,16 +71,17 @@
     },
     "deploy": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "command": "nx run firebase-criaty-ailert:firebase deploy"
       }
     }
   },
   "tags": [
-    "firebase:app",
+    "firebase:app", 
     "firebase:name:firebase-criaty-ailert"
+  ],
+  "implicitDependencies": [
+    "firebase-criaty-ailert-functions"
   ]
 }

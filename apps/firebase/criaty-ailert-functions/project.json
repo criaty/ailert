@@ -1,0 +1,47 @@
+{
+  "name": "firebase-criaty-ailert-functions",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/firebase/criaty-ailert-functions/src",
+  "projectType": "application",
+  "tags": [
+    "firebase:function",
+    "firebase:name:firebase-criaty-ailert-functions",
+    "firebase:dep:firebase-criaty-ailert"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/firebase/criaty-ailert-functions",
+        "main": "apps/firebase/criaty-ailert-functions/src/main.ts",
+        "tsConfig": "apps/firebase/criaty-ailert-functions/tsconfig.app.json",
+        "assets": [
+          "apps/firebase/criaty-ailert-functions/src/assets",
+          {
+            "glob": "**/*",
+            "input": "apps/firebase/criaty-ailert/environment",
+            "output": "."
+          }
+        ],
+        "generatePackageJson": true,
+        "platform": "node",
+        "bundle": true,
+        "thirdParty": false,
+        "dependenciesFieldType": "dependencies",
+        "target": "node20",
+        "format": ["esm"],
+        "esbuildOptions": {
+          "logLevel": "info"
+        }
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run firebase-criaty-ailert:deploy --only functions:firebase-criaty-ailert-functions"
+      },
+      "dependsOn": ["build"]
+    }
+  }
+}
