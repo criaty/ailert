@@ -16,7 +16,9 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "paths": {}
+    "paths": {
+      "@ailert/model": ["libs/model/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
