@@ -18,7 +18,8 @@
     "isolatedModules": true,
     "paths": {
       "@ailert/model": ["libs/model/src/index.ts"],
-      "@ailert/model-types": ["libs/model-types/src/index.ts"]
+      "@ailert/model-types": ["libs/model-types/src/index.ts"],
+      "@ailert/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
