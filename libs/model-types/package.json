@@ -1,0 +1,9 @@
+{
+  "name": "@ailert/model-types",
+  "version": "0.0.1",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {},
+  "dependencies": {},
+  "peerDependencies": {}
+}
