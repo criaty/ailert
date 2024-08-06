@@ -8,14 +8,14 @@ import { createPaletteConfig } from '@blockium/theme';
 import { LayoutConfig } from '@blockium/layout';
 import { IUser } from '@blockium/firebase';
 
-import { AppLogo, isDefined, useCurrentCustomer } from '@ailert/ui';
+import { AppLogo, isDefined } from '@ailert/ui';
 import { User } from '@ailert/model-types';
 
 // import { Signout } from './Signout';
 import { HomePage } from '../pages';
 
 export const App: React.FC = (props) => {
-  const [, setCurrentCustomer] = useCurrentCustomer();
+  // const [, setCurrentCustomer] = useCurrentCustomer();
 
   // 1. Configure Authentication
   const firebaseConfig = {
@@ -46,7 +46,8 @@ export const App: React.FC = (props) => {
     onAfterAuthStateChanged: async (user: IUser) => {
       const customer = (await getUserDB(user.id)) as unknown as User;
       if (!isDefined(customer, t('model:error.no-customer'))) return false;
-      setCurrentCustomer(customer);
+      // setCurrentCustomer(customer);
+
       return true;
     },
   };
