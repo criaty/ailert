@@ -9,6 +9,7 @@ import { LayoutConfig } from '@blockium/layout';
 import { IUser } from '@blockium/firebase';
 
 import { AppLogo, isDefined, useCurrentCustomer } from '@ailert/ui';
+import { getUserDB } from '@ailert/model';
 import { User } from '@ailert/model-types';
 
 import { Signout } from './Signout';
@@ -109,6 +110,3 @@ export const App: React.FC = (props) => {
 };
 
 export default App;
-function getUserDB(id: string): unknown {
-  throw new Error('Function not implemented.');
-}
