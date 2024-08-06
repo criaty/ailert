@@ -12,8 +12,8 @@ import { AppLogo, isDefined, useCurrentCustomer } from '@ailert/ui';
 import { getUserDB } from '@ailert/model';
 import { User } from '@ailert/model-types';
 
+import { HomePage, SettingsPage } from '../pages';
 import { Signout } from './Signout';
-import { HomePage } from '../pages';
 
 export const App: React.FC = (props) => {
   const [, setCurrentCustomer] = useCurrentCustomer();
@@ -94,7 +94,10 @@ export const App: React.FC = (props) => {
   };
 
   // 4. Define the routes
-  const routeElements = [{ path: '/', element: () => <HomePage /> }];
+  const routeElements = [
+    { path: '/', element: <HomePage /> },
+    { path: '/settings', element: <SettingsPage /> },
+  ];
 
   return (
     <>
