@@ -6,8 +6,7 @@
     "build": "nx build ailert && nx build firebase-criaty-ailert",
     "deploy": "nx deploy firebase-criaty-ailert",
     "deploy-hosting": "nx deploy firebase-criaty-ailert -- --only hosting:ailert",
-    "watch": "nx watch firebase-criaty-ailert",
-    "emulate": "nx killports firebase-criaty-ailert && nx emulate firebase-criaty-ailert"
+    "emulate": "nx run-many --targets=build --projects=tag:firebase:dep:firebase-criaty-ailert --parallel=100 --watch & nx emulate firebase-criaty-ailert"
   },
   "private": true,
   "dependencies": {

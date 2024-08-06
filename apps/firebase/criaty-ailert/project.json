@@ -56,10 +56,10 @@
       "dependsOn": ["build"],
       "options": {
         "commands": [
-          "nx run-many --targets=build --projects=tag:firebase:dep:firebase-criaty-ailert --parallel=100 --watch",
+          "nx run firebase-criaty-ailert:killports",
           "nx run firebase-criaty-ailert:firebase emulators:start --import=apps/firebase/criaty-ailert/.emulators --export-on-exit"
         ],
-        "parallel": true
+        "parallel": false
       }
     },
     "serve": {
