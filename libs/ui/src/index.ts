@@ -7,6 +7,7 @@ addResourceBundles([
   { lng: 'pt-BR', ns: 'model', resources: pt_BR },
 ]);
 
+export * from './lib/camera';
 export * from './lib/hooks';
 export * from './lib/loading';
 export * from './lib/logo';
