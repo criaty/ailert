@@ -46,7 +46,7 @@ export const App: React.FC = (props) => {
     },
     onAfterAuthStateChanged: async (user: IUser) => {
       const customer = (await getUserDB(user.id)) as unknown as User;
-      if (!isDefined(customer, t('model:error.no-customer'))) return false;
+      if (!isDefined(customer, t('error.no-customer'))) return false;
       setCurrentCustomer(customer);
 
       return true;
