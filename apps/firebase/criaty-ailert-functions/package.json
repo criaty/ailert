@@ -7,7 +7,7 @@
     "build": "nx build firebase-criaty-ailert-functions",
     "deploy": "nx deploy firebase-criaty-ailert-functions"
   },
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": "20"
   },
