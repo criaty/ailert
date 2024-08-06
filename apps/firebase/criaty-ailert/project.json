@@ -5,6 +5,7 @@
   "targets": {
     "build": {
       "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
       "options": {
         "command": "echo Build succeeded."
       }
@@ -52,6 +53,7 @@
     },
     "emulate": {
       "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "options": {
         "commands": [
           "nx run firebase-criaty-ailert:killports",
@@ -77,11 +79,6 @@
       }
     }
   },
-  "tags": [
-    "firebase:app", 
-    "firebase:name:firebase-criaty-ailert"
-  ],
-  "implicitDependencies": [
-    "firebase-criaty-ailert-functions"
-  ]
+  "tags": ["firebase:app", "firebase:name:firebase-criaty-ailert"],
+  "implicitDependencies": ["firebase-criaty-ailert-functions"]
 }

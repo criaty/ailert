@@ -16,5 +16,7 @@
     "firebase-functions": "5.0.1"
   },
   "devDependencies": {},
-  "private": true
+  "private": true,
+  "module": "./main.cjs",
+  "main": "./main.cjs"
 }

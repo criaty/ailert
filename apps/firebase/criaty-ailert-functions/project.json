@@ -30,7 +30,7 @@
         "thirdParty": false,
         "dependenciesFieldType": "dependencies",
         "target": "node20",
-        "format": ["esm"],
+        "format": ["cjs"],
         "esbuildOptions": {
           "logLevel": "info"
         }

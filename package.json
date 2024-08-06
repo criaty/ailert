@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "build": "nx build ailert && nx build firebase-criaty-ailert && nx build firebase-criaty-ailert-functions",
+    "build": "nx build ailert && nx build firebase-criaty-ailert",
     "deploy": "nx deploy firebase-criaty-ailert",
     "deploy-hosting": "nx deploy firebase-criaty-ailert -- --only hosting:ailert",
     "emulate": "nx emulate firebase-criaty-ailert"
