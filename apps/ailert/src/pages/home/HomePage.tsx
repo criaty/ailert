@@ -1,4 +1,5 @@
-import { Camera, model } from '@ailert/ui';
+import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
+import { Camera, model, promptFromAlert } from '@ailert/ui';
 import { Container, useTheme } from '@mui/material';
 
 export const HomePage = () => {
@@ -6,7 +7,7 @@ export const HomePage = () => {
 
   const onPicture = async (image64: string) => {
     // console.log(image64);
-    const prompt = 'What is this image?';
+    const prompt = promptFromAlert(CHILD_IN_DANGER_ALERT);
     const image = {
       inlineData: {
         data: image64.split(',')[1],
