@@ -1,12 +1,21 @@
-import { Camera } from '@ailert/ui';
+import { Camera, model } from '@ailert/ui';
 import { Container, useTheme } from '@mui/material';
 
 export const HomePage = () => {
   const theme = useTheme();
 
-  const onPicture = (image64: string) => {
+  const onPicture = async (image64: string) => {
     // console.log(image64);
-    // TODO: Send to Gemini API
+    const prompt = 'What is this image?';
+    const image = {
+      inlineData: {
+        data: image64.split(',')[1],
+        mimeType: 'image/jpeg',
+      },
+    };
+
+    const result = await model.generateContent([prompt, image]);
+    console.log(result.response.text());
   };
 
   return (
