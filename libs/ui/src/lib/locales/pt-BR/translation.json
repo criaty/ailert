@@ -1,4 +1,21 @@
 {
   "button.start": "Iniciar",
-  "button.stop": "Parar"
+  "button.stop": "Parar",
+  "button.save": "Salvar",
+  "settings-title": "Configurações",
+  "settings-save-success": "Configurações Salvas",
+  "label.interval": "Intervalo de atualização da IA",
+  "label.interval-description": "* Os dados acima são baseados na politica atual da API do Gemini 1.5 Flash.",
+  "option.interval4": "4 segundos: 21.600/dia - 100min iniciais gratis",
+  "option.interval6": "6 segundos: 14.400/dia - 150min iniciais gratis",
+  "option.interval10": "10 segundos: 8.640/dia - 4h,10min iniciais gratis",
+  "option.interval15": "15 segundos: 5.760/dia - 6h,15min iniciais gratis",
+  "option.interval30": "30 segundos: 2.880/dia - 12h,30min iniciais gratis",
+  "option.interval60": "60 segundos: 1.440/dia - 24h gratis",
+  "label.api-key": "Chave da API",
+  "label.api-key-placeholder": "Insira sua chave da API",
+  "label.api-key-description-1": "* Para obter uma chave da API Gemini gratuitamente, você precisa criar uma conta no Google AI Studio em ",
+  "label.api-key-description-2": "https://aistudio.google.com/app/apikey",
+  "label.api-key-description-3": ". Note que o uso da API Gemini é gratuito com restrições. Consulte a documentação do Google AI Studio para obter mais informações.",
+  "label.api-key-description-4": "* Nós não armazenamos sua chave da API. Ela é armazenada localmente no seu navegador."
 }
