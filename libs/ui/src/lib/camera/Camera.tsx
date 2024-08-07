@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { enqueueSnackbar } from 'notistack';
 import { Button, Stack } from '@mui/material';
+
+import { useImageUpdate } from '../gemini';
 
 // TODO: 4. Get front or back camera if any
 // TODO: Adjust camera width and height to the screen size
@@ -9,8 +12,6 @@ import { Button, Stack } from '@mui/material';
 type CameraProps = {
   width?: number;
   height?: number;
-  interval?: number; // in milliseconds
-  onCapture?: (image64: string) => void;
 };
 
 const DEFAULT_INTERVAL = 4000; // 4 seconds
@@ -19,13 +20,36 @@ const DEFAULT_QUALITY = 0.5;
 export const Camera: React.FC<CameraProps> = ({
   width = 320,
   height = 240,
-  interval = DEFAULT_INTERVAL,
-  onCapture,
 }) => {
   const { t } = useTranslation();
   const [started, setStarted] = useState(false);
   const intervalRef = useRef<unknown | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const generatingRef = useRef(false);
+  const { onImageUpdate } = useImageUpdate();
+
+  // TODO: Use interval from session storage. Get it from ModelContext
+  const interval = DEFAULT_INTERVAL;
+
+  const onCapture = useCallback(
+    async (image64: string) => {
+      if (generatingRef.current) return;
+      generatingRef.current = true;
+      try {
+        const result = await onImageUpdate(image64);
+        console.log(result?.response.text());
+        //
+      } catch (error) {
+        console.error(error);
+        stopCapture();
+        enqueueSnackbar(t('ui:error.onImageUpdate'), { variant: 'error' });
+        //
+      } finally {
+        generatingRef.current = false;
+      }
+    },
+    [onImageUpdate, t],
+  );
 
   const captureImage = useCallback(() => {
     if (!videoRef.current) return;
@@ -38,7 +62,7 @@ export const Camera: React.FC<CameraProps> = ({
       ?.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
     const image64 = canvas.toDataURL('image/jpeg', DEFAULT_QUALITY);
-    onCapture?.(image64);
+    onCapture(image64);
   }, [height, width, onCapture]);
 
   useEffect(() => {

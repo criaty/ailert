@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { enqueueSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
 import {
@@ -15,6 +15,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Clear as ClearIcon } from '@mui/icons-material';
+import { ModelContext } from '../gemini';
 
 export const SettingsForm = () => {
   const { t } = useTranslation();
@@ -24,10 +25,12 @@ export const SettingsForm = () => {
   const [apiKey, setApiKey] = useState(
     () => sessionStorage.getItem('apiKey') || '',
   );
+  const { setApiKey: setApiKeyModel } = useContext(ModelContext);
 
   const saveSettings = () => {
     sessionStorage.setItem('interval', interval.toString());
     sessionStorage.setItem('apiKey', apiKey);
+    setApiKeyModel(apiKey);
     enqueueSnackbar(t('ui:settings-save-success'));
   };
 

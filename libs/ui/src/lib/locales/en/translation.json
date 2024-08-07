@@ -20,5 +20,6 @@
   "label.api-key-description-1": "* To get a free Gemini API key, you need to create an account on Google AI Studio at ",
   "label.api-key-description-2": "https://aistudio.google.com/app/apikey",
   "label.api-key-description-3": ". Note that the use of the Gemini API is free with restrictions. Check the Google AI Studio documentation for more information.",
-  "label.api-key-description-4": "* We do not store your API key. It is stored locally in your browser."
+  "label.api-key-description-4": "* We do not store your API key. It is stored locally in your browser.",
+  "error.onImageUpdate": "Error updating the image. The API key may be incorrect or have exceeded the usage limit."
 }
