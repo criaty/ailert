@@ -10,7 +10,7 @@ type CameraProps = {
   width?: number;
   height?: number;
   interval?: number; // in milliseconds
-  onCaptured?: (image64: string) => void;
+  onCapture?: (image64: string) => void;
 };
 
 const DEFAULT_INTERVAL = 4000; // 4 seconds
@@ -20,7 +20,7 @@ export const Camera: React.FC<CameraProps> = ({
   width = 320,
   height = 240,
   interval = DEFAULT_INTERVAL,
-  onCaptured,
+  onCapture,
 }) => {
   const { t } = useTranslation();
   const [started, setStarted] = useState(false);
@@ -38,8 +38,8 @@ export const Camera: React.FC<CameraProps> = ({
       ?.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
     const image64 = canvas.toDataURL('image/jpeg', DEFAULT_QUALITY);
-    onCaptured?.(image64);
-  }, [height, width, onCaptured]);
+    onCapture?.(image64);
+  }, [height, width, onCapture]);
 
   useEffect(() => {
     navigator.mediaDevices

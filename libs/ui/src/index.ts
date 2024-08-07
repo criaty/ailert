@@ -8,6 +8,7 @@ addResourceBundles([
 ]);
 
 export * from './lib/camera';
+export * from './lib/contents';
 export * from './lib/forms';
 export * from './lib/gemini';
 export * from './lib/hooks';

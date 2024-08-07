@@ -8,7 +8,12 @@ import { createPaletteConfig } from '@blockium/theme';
 import { LayoutConfig } from '@blockium/layout';
 import { IUser } from '@blockium/firebase';
 
-import { AppLogo, isDefined, useCurrentCustomer } from '@ailert/ui';
+import {
+  AppLogo,
+  isDefined,
+  ModelProvider,
+  useCurrentCustomer,
+} from '@ailert/ui';
 import { getUserDB } from '@ailert/model';
 import { User } from '@ailert/model-types';
 
@@ -100,7 +105,7 @@ export const App: React.FC = (props) => {
   ];
 
   return (
-    <>
+    <ModelProvider>
       <AppBase
         authConfig={authConfig}
         themeConfig={themeConfig}
@@ -108,7 +113,7 @@ export const App: React.FC = (props) => {
         routeElements={routeElements}
       />
       <Signout />
-    </>
+    </ModelProvider>
   );
 };
 

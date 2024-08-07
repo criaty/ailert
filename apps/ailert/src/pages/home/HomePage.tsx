@@ -1,9 +1,7 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Container, useTheme } from '@mui/material';
-import { Camera, model, promptFromAlert } from '@ailert/ui';
-import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
+import { Camera, ModelContext, NoApiKey, useImageUpdate } from '@ailert/ui';
 
-// TODO: 2. Add the config to set the interval for the camera and Gemini API key
 // TODO: 3. Add alert selector (as Cards) to choose the alert to trigger
 // TODO: 5. Add ML model for text to speech (use transformers.js)
 // TODO: Manage alerts (CRUD) with a form. Add a side menu
@@ -11,24 +9,18 @@ import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
 export const HomePage = () => {
   const theme = useTheme();
   const generatingRef = useRef(false);
+  const { model } = useContext(ModelContext);
+  const { onImageUpdate } = useImageUpdate();
 
-  const onCaptured = async (image64: string) => {
+  const onCapture = async (image64: string) => {
     if (generatingRef.current) return;
     generatingRef.current = true;
-
-    // console.log(image64);
-    const prompt = promptFromAlert(CHILD_IN_DANGER_ALERT);
-    const image = {
-      inlineData: {
-        data: image64.split(',')[1],
-        mimeType: 'image/jpeg',
-      },
-    };
-
-    const result = await model.generateContent([prompt, image]);
+    const result = await onImageUpdate(image64);
     generatingRef.current = false;
-    console.log(result.response.text());
+    console.log(result?.response.text());
   };
+
+  // TODO: Show message to configure the API key if not set yet
 
   return (
     <Container
@@ -39,7 +31,7 @@ export const HomePage = () => {
         paddingTop: theme.spacing(1),
       }}
     >
-      <Camera onCaptured={onCaptured} />
+      {model ? <Camera onCapture={onCapture} /> : <NoApiKey />}
     </Container>
   );
 };
