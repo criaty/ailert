@@ -68,7 +68,13 @@ export default defineConfig({
         entryFileNames: '[name].js',
       },
       // External packages that should not be bundled into your library.
-      external: ['@criaty/model-types'],
+      external: [
+        '@ailert/model-types',
+        'firebase/firestore/lite',
+        '@blockium/firebase',
+        '@blockium/i18n',
+        '@blockium/utils',
+      ],
     },
   },
 

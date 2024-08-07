@@ -68,7 +68,7 @@ export default defineConfig({
         entryFileNames: '[name].js',
       },
       // External packages that should not be bundled into your library.
-      external: [],
+      external: ['@blockium/i18n'],
     },
   },
 
