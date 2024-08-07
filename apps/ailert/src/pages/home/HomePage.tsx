@@ -1,11 +1,21 @@
-import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
-import { Camera, model, promptFromAlert } from '@ailert/ui';
+import { useRef } from 'react';
 import { Container, useTheme } from '@mui/material';
+import { Camera, model, promptFromAlert } from '@ailert/ui';
+import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
+
+// TODO: 2. Add the config to set the interval for the camera and Gemini API key
+// TODO: 3. Add alert selector (as Cards) to choose the alert to trigger
+// TODO: 5. Add ML model for text to speech (use transformers.js)
+// TODO: Manage alerts (CRUD) with a form. Add a side menu
 
 export const HomePage = () => {
   const theme = useTheme();
+  const generatingRef = useRef(false);
 
-  const onPicture = async (image64: string) => {
+  const onCaptured = async (image64: string) => {
+    if (generatingRef.current) return;
+    generatingRef.current = true;
+
     // console.log(image64);
     const prompt = promptFromAlert(CHILD_IN_DANGER_ALERT);
     const image = {
@@ -16,6 +26,7 @@ export const HomePage = () => {
     };
 
     const result = await model.generateContent([prompt, image]);
+    generatingRef.current = false;
     console.log(result.response.text());
   };
 
@@ -28,7 +39,7 @@ export const HomePage = () => {
         paddingTop: theme.spacing(1),
       }}
     >
-      <Camera onPicture={onPicture} />
+      <Camera onCaptured={onCaptured} />
     </Container>
   );
 };
