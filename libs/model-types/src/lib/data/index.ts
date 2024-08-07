@@ -1,2 +1,2 @@
-export * from './AlertConfig';
+export * from './Alert';
 export * from './User';
