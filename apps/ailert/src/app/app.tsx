@@ -10,6 +10,7 @@ import { LayoutConfig } from '@blockium/layout';
 import { IUser } from '@blockium/firebase';
 
 import {
+  AlertProvider,
   AppLogo,
   isDefined,
   ModelProvider,
@@ -113,13 +114,15 @@ export const App: React.FC = (props) => {
 
   return (
     <ModelProvider>
-      <AppBase
-        authConfig={authConfig}
-        themeConfig={themeConfig}
-        layoutConfig={layoutConfig}
-        routeElements={routeElements}
-      />
-      <Signout />
+      <AlertProvider>
+        <AppBase
+          authConfig={authConfig}
+          themeConfig={themeConfig}
+          layoutConfig={layoutConfig}
+          routeElements={routeElements}
+        />
+        <Signout />
+      </AlertProvider>
     </ModelProvider>
   );
 };

@@ -7,6 +7,7 @@ addResourceBundles([
   { lng: 'pt-BR', ns: 'ui', resources: pt_BR },
 ]);
 
+export * from './lib/alert';
 export * from './lib/camera';
 export * from './lib/contents';
 export * from './lib/forms';

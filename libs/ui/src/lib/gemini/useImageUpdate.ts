@@ -1,13 +1,14 @@
 import { useContext } from 'react';
-import { CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
 import { ModelContext } from './ModelContext';
 import { promptFromAlert } from './prompts';
+import { AlertContext } from '../alert';
 
 export const useImageUpdate = () => {
   const { model } = useContext(ModelContext);
+  const { alert } = useContext(AlertContext);
 
   const onImageUpdate = async (image64: string) => {
-    const prompt = promptFromAlert(CHILD_IN_DANGER_ALERT);
+    const prompt = promptFromAlert(alert);
     const image = {
       inlineData: {
         data: image64.split(',')[1],
