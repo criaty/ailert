@@ -13,7 +13,7 @@ export interface Alert {
 export const CHILD_IN_DANGER_ALERT: Alert = {
   title: 'model-types:autistic_child_alert_title',
   description: 'model-types:autistic_child_alert_description',
-  imageUrl: 'public/images/autistic-child-alert.webp',
+  imageUrl: '/images/autistic-child-alert.webp',
   contextToWatch: 'Autistic child at risk of injury',
   outputType: 'json',
   outputExample:
@@ -26,7 +26,7 @@ export const CHILD_IN_DANGER_ALERT: Alert = {
 export const ANIMAL_MAKING_MESS_ALERT: Alert = {
   title: 'model-types:making_mess_alert_title',
   description: 'model-types:making_mess_alert_description',
-  imageUrl: 'public/images/animal-causing-mess-alert.webp',
+  imageUrl: '/images/animal-causing-mess-alert.webp',
   contextToWatch: 'Animal making a mess',
   outputType: 'text',
   outputExample: 'Describe the mess the animal is making',
@@ -38,7 +38,7 @@ export const ANIMAL_MAKING_MESS_ALERT: Alert = {
 export const ELDER_FALL_ALERT: Alert = {
   title: 'model-types:elder_fall_alert_title',
   description: 'model-types:elder_fall_alert_description',
-  imageUrl: 'public/images/elder-fall-alert.webp',
+  imageUrl: '/images/elder-fall-alert.webp',
   contextToWatch: 'Elder is getting up from bed with a risk to fall',
   outputType: 'json',
   outputExample:

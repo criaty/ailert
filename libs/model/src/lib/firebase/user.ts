@@ -6,7 +6,7 @@ import {
   query,
   updateDoc,
   where,
-} from 'firebase/firestore/lite';
+} from 'firebase/firestore';
 
 import { User } from '@ailert/model-types';
 import { db } from '../db';

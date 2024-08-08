@@ -70,7 +70,7 @@ export default defineConfig({
       // External packages that should not be bundled into your library.
       external: [
         '@ailert/model-types',
-        'firebase/firestore/lite',
+        'firebase/firestore',
         '@blockium/firebase',
         '@blockium/i18n',
         '@blockium/utils',

@@ -13,7 +13,7 @@ export const AlertCard: React.FC<AlertCardProps> = ({
   title,
   description,
   imageUrl,
-  maxHeight = 400,
+  maxHeight = 420,
   onClick,
 }) => {
   return (
