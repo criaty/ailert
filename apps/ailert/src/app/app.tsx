@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { Home as HomeIcon } from '@mui/icons-material';
+import { Camera as CameraIcon } from '@mui/icons-material';
 import { Settings as SettingsIcon } from '@mui/icons-material';
 
 import { AppBase, AuthConfig } from '@blockium/appbase';
@@ -17,7 +18,7 @@ import {
 import { getUserDB } from '@ailert/model';
 import { User } from '@ailert/model-types';
 
-import { HomePage, SettingsPage } from '../pages';
+import { CameraPage, HomePage, SettingsPage } from '../pages';
 import { Signout } from './Signout';
 
 export const App: React.FC = (props) => {
@@ -94,6 +95,11 @@ export const App: React.FC = (props) => {
           href: '/',
           icon: <HomeIcon />,
         },
+        {
+          label: t('side-menu.camera'),
+          href: '/camera',
+          icon: <CameraIcon />,
+        },
       ],
     },
   };
@@ -101,6 +107,7 @@ export const App: React.FC = (props) => {
   // 4. Define the routes
   const routeElements = [
     { path: '/', element: <HomePage /> },
+    { path: '/camera', element: <CameraPage /> },
     { path: '/settings', element: <SettingsPage /> },
   ];
 

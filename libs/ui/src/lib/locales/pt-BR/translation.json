@@ -21,5 +21,6 @@
   "label.api-key-description-2": "https://aistudio.google.com/app/apikey",
   "label.api-key-description-3": ". Note que o uso da API Gemini é gratuito com restrições. Consulte a documentação do Google AI Studio para obter mais informações.",
   "label.api-key-description-4": "* Nós não armazenamos sua chave da API. Ela é armazenada localmente no seu navegador.",
-  "error.onImageUpdate": "Erro ao atualizar a imagem. A chave da API pode estar incorreta ou ter excedido o limite de uso."
+  "error.onImageUpdate": "Erro ao atualizar a imagem. A chave da API pode estar incorreta ou ter excedido o limite de uso.",
+  "alert-list-title": "Alertas"
 }

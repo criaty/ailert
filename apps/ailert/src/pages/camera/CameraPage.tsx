@@ -1,12 +1,8 @@
 import { useContext } from 'react';
 import { Container, useTheme } from '@mui/material';
-import { AlertList, ModelContext, NoApiKey } from '@ailert/ui';
+import { Camera, ModelContext, NoApiKey } from '@ailert/ui';
 
-// TODO: 3. Add alert selector (as Cards) to choose the alert to trigger
-// TODO: 5. Add ML model for text to speech (use transformers.js)
-// TODO: Manage alerts (CRUD) with a form. Add a side menu
-
-export const HomePage = () => {
+export const CameraPage = () => {
   const theme = useTheme();
   const { model } = useContext(ModelContext);
 
@@ -19,7 +15,7 @@ export const HomePage = () => {
         paddingTop: theme.spacing(1),
       }}
     >
-      {model ? <AlertList /> : <NoApiKey />}
+      {model ? <Camera /> : <NoApiKey />}
     </Container>
   );
 };
