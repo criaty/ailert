@@ -1,9 +1,10 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { enqueueSnackbar } from 'notistack';
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 import { ModelContext, useImageUpdate } from '../gemini';
+import { AlertContext } from '../alert';
 
 // TODO: 4. Get front or back camera if any
 // TODO: Adjust camera width and height to the screen size
@@ -28,6 +29,7 @@ export const Camera: React.FC<CameraProps> = ({
   const generatingRef = useRef(false);
   const { onImageUpdate } = useImageUpdate();
   const { updateInterval } = useContext(ModelContext);
+  const { alert } = useContext(AlertContext);
 
   const onCapture = useCallback(
     async (image64: string) => {
@@ -94,6 +96,9 @@ export const Camera: React.FC<CameraProps> = ({
 
   return (
     <Stack width="100%" gap={2} alignItems="center">
+      <Typography gutterBottom variant="h5" component="div">
+        {alert.title}
+      </Typography>
       <video
         ref={videoRef}
         id="video"

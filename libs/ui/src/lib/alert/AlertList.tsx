@@ -1,10 +1,16 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography } from '@mui/material';
-import { AlertCard } from './AlertCard';
+
 import { DEFAULT_ALERTS } from '@ailert/model-types';
+import { AlertCard } from './AlertCard';
+import { AlertContext } from './AlertContext';
 
 export const AlertList = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { setAlert } = useContext(AlertContext);
 
   // TODO: Add user defined alerts. Create an AlertContext to store them
   const alerts = DEFAULT_ALERTS.map((alert) => ({
@@ -14,8 +20,11 @@ export const AlertList = () => {
   }));
 
   const onAlertClick = (alertIndex: number) => {
-    console.log('Alert clicked:', alerts[alertIndex]);
-    // TODO: Add selected alert to the context and navigate to the camera page
+    // Add selected alert to the context
+    const alert = alerts[alertIndex];
+    setAlert(alert);
+    // Navigate to the camera page
+    navigate('/camera');
   };
 
   return (
