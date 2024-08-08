@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Container, useTheme } from '@mui/material';
 import { AlertList, ModelContext, NoApiKey } from '@ailert/ui';
 
-// TODO: 3. Add alert selector (as Cards) to choose the alert to trigger
 // TODO: 5. Add ML model for text to speech (use transformers.js)
 // TODO: Manage alerts (CRUD) with a form. Add a side menu
 

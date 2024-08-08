@@ -37,6 +37,14 @@ export const Camera: React.FC<CameraProps> = ({
       generatingRef.current = true;
       try {
         const result = await onImageUpdate(image64);
+
+        // TODO: Show a popup message if risk is medium(yellow) or high(red)
+        // If alert.actionType === 'display_text'
+        // If alert.outputType === 'json' get the risk and message fields
+        // If no risk field uses a default color
+        // If no message field uses a default message
+        // If alert.outputType === 'text' use the output as the message
+
         console.log(result?.response.text());
         //
       } catch (error) {
