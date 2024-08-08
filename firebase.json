@@ -3,31 +3,58 @@
     "rules": "apps/firebase/criaty-ailert/firestore.rules",
     "indexes": "apps/firebase/criaty-ailert/firestore.indexes.json"
   },
-  "hosting": {
-    "public": "dist/apps/ailert",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
-    "headers": [
-      {
-        "source": "**/*",
-        "headers": [
-          {
-            "key": "Cross-Origin-Opener-Policy",
-            "value": "same-origin-allow-popups"
-          },
-          {
-            "key": "Cross-Origin-Embedder-Policy",
-            "value": "unsafe-none"
-          }
-        ]
-      }
-    ]
-  },
+  "hosting": [
+    {
+      "public": "dist/apps/ailert",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "unsafe-none"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "public": "dist/apps/ailert-viewer",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "unsafe-none"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "storage": {
     "rules": "apps/firebase/criaty-ailert/storage.rules"
   },
