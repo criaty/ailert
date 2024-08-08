@@ -5,7 +5,9 @@
   },
   "hosting": [
     {
+      "target": "ailert",
       "public": "dist/apps/ailert",
+      "cleanUrls": true,
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
@@ -30,7 +32,9 @@
       ]
     },
     {
+      "target": "ailert-viewer",
       "public": "dist/apps/ailert-viewer",
+      "cleanUrls": true,
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
