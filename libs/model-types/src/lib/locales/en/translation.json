@@ -1,1 +1,8 @@
-{}
+{
+  "autistic_child_alert_title": "Autistic child in Danger",
+  "autistic_child_alert_description": "This alert monitors an autistic child who may be at risk of injury. The output is a JSON object { \"risk\": \"\", \"message\": \"\" } describing the risk level and the situation of the child. The action is to popup a message on the screen if risk is medium or high.",
+  "making_mess_alert_title": "Animal Making a Mess",
+  "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a text description of the mess, and the action is to synthesize the description into a voice message.",
+  "elder_fall_alert_title": "Elderly Fall",
+  "elder_fall_alert_description": "This alert monitors an elder getting up from bed with a risk of falling. The output is a JSON object describing the risk level and the situation of the elder. The action is to call a webhook passing the JSON object. You can monitor this at https://elderfall.criaty.com."
+}

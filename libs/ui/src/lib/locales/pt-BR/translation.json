@@ -22,11 +22,5 @@
   "label.api-key-description-3": ". Note que o uso da API Gemini é gratuito com restrições. Consulte a documentação do Google AI Studio para obter mais informações.",
   "label.api-key-description-4": "* Nós não armazenamos sua chave da API. Ela é armazenada localmente no seu navegador.",
   "error.onImageUpdate": "Erro ao atualizar a imagem. A chave da API pode estar incorreta ou ter excedido o limite de uso.",
-  "alert-list-title": "Alertas",
-  "autistic_child_alert_title": "Criança Autista em Perigo",
-  "autistic_child_alert_description": "Este alerta monitora uma criança autista que pode estar em risco de lesão. A saída é um objeto JSON { \"risk\": \"\", \"message\": \"\" } descrevendo o nível de risco e a situação da criança. A ação é exibir uma mensagem na tela se o risco for médio ou alto.",
-  "making_mess_alert_title": "Animal Fazendo Bagunça",
-  "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A saída é uma descrição textual da bagunça, e a ação é sintetizar a descrição em uma mensagem de voz.",
-  "elder_fall_alert_title": "Queda de Idoso",
-  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A saída é um objeto JSON descrevendo o nível de risco e a situação do idoso. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://elderfall.criaty.com."
+  "alert-list-title": "Alertas"
 }

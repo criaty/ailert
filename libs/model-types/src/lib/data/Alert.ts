@@ -11,8 +11,8 @@ export interface Alert {
 
 // Alert for a child in danger with JSON output and text display
 export const CHILD_IN_DANGER_ALERT: Alert = {
-  title: 'ui:autistic_child_alert_title',
-  description: 'ui:autistic_child_alert_description',
+  title: 'model-types:autistic_child_alert_title',
+  description: 'model-types:autistic_child_alert_description',
   imageUrl: 'public/images/autistic-child-alert.webp',
   contextToWatch: 'Autistic child at risk of injury',
   outputType: 'json',
@@ -24,8 +24,8 @@ export const CHILD_IN_DANGER_ALERT: Alert = {
 
 // Alert for an animal making a mess with text output and voice synthesis
 export const ANIMAL_MAKING_MESS_ALERT: Alert = {
-  title: 'ui:making_mess_alert_title',
-  description: 'ui:making_mess_alert_description',
+  title: 'model-types:making_mess_alert_title',
+  description: 'model-types:making_mess_alert_description',
   imageUrl: 'public/images/animal-causing-mess-alert.webp',
   contextToWatch: 'Animal making a mess',
   outputType: 'text',
@@ -36,8 +36,8 @@ export const ANIMAL_MAKING_MESS_ALERT: Alert = {
 
 // Alert for an elder in risk to fall with JSON output and webhook call
 export const ELDER_FALL_ALERT: Alert = {
-  title: 'ui:elder_fall_alert_title',
-  description: 'ui:elder_fall_alert_description',
+  title: 'model-types:elder_fall_alert_title',
+  description: 'model-types:elder_fall_alert_description',
   imageUrl: 'public/images/elder-fall-alert.webp',
   contextToWatch: 'Elder is getting up from bed with a risk to fall',
   outputType: 'json',
