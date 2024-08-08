@@ -1,9 +1,22 @@
 import { useTranslation } from 'react-i18next';
 import { Box, Typography } from '@mui/material';
 import { AlertCard } from './AlertCard';
+import { DEFAULT_ALERTS } from '@ailert/model-types';
 
 export const AlertList = () => {
   const { t } = useTranslation();
+
+  // TODO: Add user defined alerts. Create an AlertContext to store them
+  const alerts = DEFAULT_ALERTS.map((alert) => ({
+    ...alert,
+    title: t(alert.title),
+    description: t(alert.description),
+  }));
+
+  const onAlertClick = (alertIndex: number) => {
+    console.log('Alert clicked:', alerts[alertIndex]);
+    // TODO: Add selected alert to the context and navigate to the camera page
+  };
 
   return (
     <>
@@ -12,7 +25,7 @@ export const AlertList = () => {
       </Typography>
       <Box
         component={'div'}
-        gap={2}
+        gap={4}
         display="grid"
         gridTemplateColumns={{
           xs: 'repeat(1, 1fr)',
@@ -22,9 +35,15 @@ export const AlertList = () => {
         // borderRadius={{ xs: '0px 0px 16px 16px', md: '0px 16px 16px 0px' }}
         py={0}
       >
-        <AlertCard title={'Alerta 1'} description={'Description 1'} />
-        <AlertCard title={'Alerta 2'} description={'Description 2'} />
-        <AlertCard title={'Alerta 3'} description={'Description 3'} />
+        {alerts.map((alert, index) => (
+          <AlertCard
+            key={index}
+            title={alert.title}
+            description={alert.description}
+            imageUrl={alert.imageUrl}
+            onClick={() => onAlertClick(index)}
+          />
+        ))}
       </Box>
     </>
   );
