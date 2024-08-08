@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { enqueueSnackbar } from 'notistack';
 import { Button, Stack } from '@mui/material';
 
-import { useImageUpdate } from '../gemini';
+import { ModelContext, useImageUpdate } from '../gemini';
 
 // TODO: 4. Get front or back camera if any
 // TODO: Adjust camera width and height to the screen size
@@ -27,9 +27,7 @@ export const Camera: React.FC<CameraProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const generatingRef = useRef(false);
   const { onImageUpdate } = useImageUpdate();
-
-  // TODO: Use interval from session storage. Get it from ModelContext
-  const interval = DEFAULT_INTERVAL;
+  const { updateInterval } = useContext(ModelContext);
 
   const onCapture = useCallback(
     async (image64: string) => {
@@ -77,13 +75,16 @@ export const Camera: React.FC<CameraProps> = ({
 
     return () => stopCapture();
     //
-  }, [interval]);
+  }, [updateInterval]);
 
   const startCapture = () => {
     setStarted(true);
-    intervalRef.current = setInterval(() => {
-      captureImage();
-    }, interval);
+    intervalRef.current = setInterval(
+      () => {
+        captureImage();
+      },
+      updateInterval ? updateInterval * 1000 : DEFAULT_INTERVAL,
+    );
   };
 
   const stopCapture = () => {

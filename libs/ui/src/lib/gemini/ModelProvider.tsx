@@ -4,11 +4,13 @@ import { ModelContext } from './ModelContext';
 
 export const ModelProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [model, setModel] = useState<GenerativeModel>();
+  const [updateInterval, setUpdateInterval] = useState<number>();
 
   useEffect(() => {
     const apiKey = sessionStorage.getItem('apiKey');
-    if (!apiKey) return;
-    setApiKey(apiKey);
+    apiKey && setApiKey(apiKey);
+    const updateInterval = sessionStorage.getItem('updateInterval');
+    updateInterval && setUpdateInterval(parseInt(updateInterval));
   }, []);
 
   const setApiKey = (apiKey: string) => {
@@ -18,7 +20,9 @@ export const ModelProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <ModelContext.Provider value={{ model, setApiKey }}>
+    <ModelContext.Provider
+      value={{ model, setApiKey, updateInterval, setUpdateInterval }}
+    >
       {children}
     </ModelContext.Provider>
   );

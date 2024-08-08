@@ -19,18 +19,26 @@ import { ModelContext } from '../gemini';
 
 export const SettingsForm = () => {
   const { t } = useTranslation();
-  const [interval, setInterval] = useState(
-    () => sessionStorage.getItem('interval') || 60,
-  );
+  const [updateInterval, setUpdateInterval] = useState(() => {
+    const savedInterval = sessionStorage.getItem('updateInterval');
+    if (savedInterval) {
+      return parseInt(savedInterval);
+    }
+    return 60;
+  });
   const [apiKey, setApiKey] = useState(
     () => sessionStorage.getItem('apiKey') || '',
   );
-  const { setApiKey: setApiKeyModel } = useContext(ModelContext);
+  const {
+    setApiKey: setApiKeyModel,
+    setUpdateInterval: setUpdateIntervalModel,
+  } = useContext(ModelContext);
 
   const saveSettings = () => {
-    sessionStorage.setItem('interval', interval.toString());
+    sessionStorage.setItem('updateInterval', updateInterval.toString());
     sessionStorage.setItem('apiKey', apiKey);
     setApiKeyModel(apiKey);
+    setUpdateIntervalModel(updateInterval);
     enqueueSnackbar(t('ui:settings-save-success'));
   };
 
@@ -50,9 +58,9 @@ export const SettingsForm = () => {
             <Select
               labelId="label-interval"
               id="interval"
-              value={interval}
+              value={updateInterval}
               label={t('ui:label.interval')}
-              onChange={(e) => setInterval(e.target.value as number)}
+              onChange={(e) => setUpdateInterval(e.target.value as number)}
             >
               <MenuItem value="4">{t('ui:option.interval4')}</MenuItem>
               <MenuItem value="6">{t('ui:option.interval6')}</MenuItem>
