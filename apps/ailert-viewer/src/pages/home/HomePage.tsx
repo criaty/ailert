@@ -1,18 +1,10 @@
-import { Container, useTheme } from '@mui/material';
+import { Container } from '@mui/material';
+import { AlertPopup } from '@ailert/ui';
 
 export const HomePage = () => {
-  const theme = useTheme();
-
   return (
-    <Container
-      maxWidth="xl"
-      disableGutters
-      sx={{
-        paddingBottom: theme.spacing(10),
-        paddingTop: theme.spacing(1),
-      }}
-    >
-      Home Page
+    <Container maxWidth="xl" disableGutters sx={{ height: '80vh' }}>
+      <AlertPopup />
     </Container>
   );
 };

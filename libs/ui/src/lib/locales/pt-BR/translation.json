@@ -2,6 +2,7 @@
   "button.start": "Iniciar",
   "button.stop": "Parar",
   "button.save": "Salvar",
+  "button.close": "Fechar",
   "button.settings": "Configurações",
   "label.no-api-key-1": "Nenhuma chave da API foi encontrada.",
   "label.no-api-key-2": "Clique no botão abaixo para adicionar uma chave da API.",
@@ -22,5 +23,9 @@
   "label.api-key-description-3": ". Note que o uso da API Gemini é gratuito com restrições. Consulte a documentação do Google AI Studio para obter mais informações.",
   "label.api-key-description-4": "* Nós não armazenamos sua chave da API. Ela é armazenada localmente no seu navegador.",
   "error.onImageUpdate": "Erro ao atualizar a imagem. A chave da API pode estar incorreta ou ter excedido o limite de uso.",
-  "alert-list-title": "Alertas"
+  "alert-list-title": "Alertas",
+  "alert-title-low": "Mensagem",
+  "alert-title-medium": "Atenção!",
+  "alert-title-high": "Ação Imediata!",
+  "alert-awaiting": "Nenhuma atualização no momento..."
 }

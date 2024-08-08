@@ -7,6 +7,12 @@ export interface Alert {
   outputExample: string;
   actionType: 'display_text' | 'synthesize_voice' | 'call_webhook';
   actionOption: string; // Voice options or webhook URL
+  webhookKey?: string;
+}
+
+export interface AlertData {
+  risk: 'low' | 'medium' | 'high';
+  message: string;
 }
 
 // Alert for a child in danger with JSON output and text display
@@ -46,6 +52,7 @@ export const ELDER_FALL_ALERT: Alert = {
   actionType: 'call_webhook',
   actionOption:
     'https://us-central1-criaty-ailert.cloudfunctions.net/elderFallAlert',
+  webhookKey: 'criaty-ailert',
 };
 
 export const DEFAULT_ALERTS: Alert[] = [

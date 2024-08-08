@@ -2,6 +2,7 @@
   "button.start": "Start",
   "button.stop": "Stop",
   "button.save": "Save",
+  "button.close": "Close",
   "button.settings": "Settings",
   "label.no-api-key-1": "No API key found.",
   "label.no-api-key-2": "Click the button below to add an API key.",
@@ -22,5 +23,9 @@
   "label.api-key-description-3": ". Note that the use of the Gemini API is free with restrictions. Check the Google AI Studio documentation for more information.",
   "label.api-key-description-4": "* We do not store your API key. It is stored locally in your browser.",
   "error.onImageUpdate": "Error updating the image. The API key may be incorrect or have exceeded the usage limit.",
-  "alert-list-title": "Alerts"
+  "alert-list-title": "Alerts",
+  "alert-title-low": "Message",
+  "alert-title-medium": "Attention!",
+  "alert-title-high": "Immediate Action!",
+  "alert-awaiting": "No updates at the moment..."
 }
