@@ -13,6 +13,7 @@ export interface Alert {
 export interface AlertData {
   risk: 'low' | 'medium' | 'high';
   message: string;
+  image64: string;
 }
 
 // Alert for a child in danger with JSON output and text display
@@ -55,8 +56,27 @@ export const ELDER_FALL_ALERT: Alert = {
   webhookKey: 'criaty-ailert',
 };
 
+// Alert for an elder in risk to fall with JSON output and webhook call
+export const HAPPY_PERSON_ALERT: Alert = {
+  title: 'model-types:happy_person_alert_title',
+  description: 'model-types:happy_person_alert_description',
+  imageUrl: '/images/elder-fall-alert.webp',
+  contextToWatch:
+    'One or more persons are happy. If persons are moderately happy, the alert is medium. If persons are very happy, the alert is high.',
+  outputType: 'json',
+  outputExample:
+    '{"risk": "low", "message": "No person smiling"} or {"risk": "medium", "message": "Describe the persons\' situation"} or {"risk": "high", "message": "A HAPPY DAY! describe the persons\' situation"}',
+  actionType: 'call_webhook',
+  actionOption:
+    'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
+  // actionOption:
+  //   'https://us-central1-criaty-ailert.cloudfunctions.net/happyPersonAlert',
+  webhookKey: 'criaty-ailert',
+};
+
 export const DEFAULT_ALERTS: Alert[] = [
   CHILD_IN_DANGER_ALERT,
   ANIMAL_MAKING_MESS_ALERT,
   ELDER_FALL_ALERT,
+  HAPPY_PERSON_ALERT,
 ];

@@ -4,5 +4,7 @@
   "making_mess_alert_title": "Animal Making a Mess",
   "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a text description of the mess, and the action is to synthesize the description into a voice message.",
   "elder_fall_alert_title": "Elderly Fall",
-  "elder_fall_alert_description": "This alert monitors an elder getting up from bed with a risk of falling. The output is a JSON object describing the risk level and the situation of the elder. The action is to call a webhook passing the JSON object. You can monitor this at https://elderfall.criaty.com."
+  "elder_fall_alert_description": "This alert monitors an elder getting up from bed with a risk of falling. The output is a JSON object describing the risk level and the situation of the elder. The action is to call a webhook passing the JSON object. You can monitor this at https://elderfall.criaty.com.",
+  "happy_person_alert_title": "Person Smiling",
+  "happy_person_alert_description": "This alert monitors people who are smiling. The output is a JSON object describing the risk level and the situation. The action is to call a webhook passing the JSON object. You can monitor this at https://personsmiling.criaty.com."
 }

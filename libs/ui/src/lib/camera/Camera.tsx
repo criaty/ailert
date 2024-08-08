@@ -5,6 +5,7 @@ import { Button, Stack, Typography } from '@mui/material';
 
 import { ModelContext, useImageUpdate } from '../gemini';
 import { AlertContext } from '../alert';
+import { useCurrentCustomer } from '../hooks';
 
 // TODO: 4. Get front or back camera if any
 // TODO: Adjust camera width and height to the screen size
@@ -30,6 +31,7 @@ export const Camera: React.FC<CameraProps> = ({
   const { onImageUpdate } = useImageUpdate();
   const { updateInterval } = useContext(ModelContext);
   const { alert } = useContext(AlertContext);
+  const [customer] = useCurrentCustomer();
 
   const onCapture = useCallback(
     async (image64: string) => {
@@ -45,6 +47,23 @@ export const Camera: React.FC<CameraProps> = ({
         // If no message field uses a default message
         // If alert.outputType === 'text' use the output as the message
 
+        // TODO: If actionType === "webhook" call the webhook with the image64 and the alert data
+        if (alert.actionType === 'call_webhook') {
+          const response = await fetch(alert.actionOption, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              image64,
+              key: alert.webhookKey,
+              userId: customer.id,
+              ...result,
+            }),
+          });
+          console.log(response);
+        }
+
         console.log(result?.response.text());
         //
       } catch (error) {
@@ -56,7 +75,7 @@ export const Camera: React.FC<CameraProps> = ({
         generatingRef.current = false;
       }
     },
-    [onImageUpdate, t],
+    [alert, customer.id, onImageUpdate, t],
   );
 
   const captureImage = useCallback(() => {

@@ -4,5 +4,7 @@
   "making_mess_alert_title": "Animal Fazendo Bagunça",
   "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A saída é uma descrição textual da bagunça, e a ação é sintetizar a descrição em uma mensagem de voz.",
   "elder_fall_alert_title": "Queda de Idoso",
-  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A saída é um objeto JSON descrevendo o nível de risco e a situação do idoso. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://elderfall.criaty.com."
+  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A saída é um objeto JSON descrevendo o nível de risco e a situação do idoso. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
+  "happy_person_alert_title": "Pessoa sorrindo",
+  "happy_person_alert_description": "Este alerta monitora pessoas que estejam sorrindo. A saída é um objeto JSON descrevendo o nível de risco e a situação. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://ailert-viewer.criaty.com."
 }
