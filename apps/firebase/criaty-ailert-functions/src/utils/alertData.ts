@@ -2,18 +2,18 @@ import { AlertData } from '@ailert/model-types';
 import { db } from './db';
 
 // Add alert to user's alerts collection
-export const addAlertDB = async (userId: string, alertData: AlertData) => {
-  const alertDoc = await db
-    .alerts(userId)
+export const addAlertDataDB = async (userId: string, alertData: AlertData) => {
+  const alertDataDoc = await db
+    .alertData(userId)
     .add({ ...alertData, createdAt: new Date().toISOString() });
-  return { id: alertDoc.id, ...alertData };
+  return { id: alertDataDoc.id, ...alertData };
 };
 
-export const updateAlertDB = async (
+export const updateAlertDataDB = async (
   userId: string,
   alertId: string,
   alertData: AlertData,
 ) => {
-  const alertRef = await db.alerts(userId).doc(alertId);
+  const alertRef = await db.alertData(userId).doc(alertId);
   await alertRef.set({ ...alertData, createdAt: new Date().toISOString() });
 };

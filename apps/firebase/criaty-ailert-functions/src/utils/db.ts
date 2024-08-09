@@ -14,5 +14,7 @@ const dataPoint = <T extends DocumentData>(collectionPath: string) =>
 const db = {
   users: dataPoint<User>('users'),
   alerts: (userId: string) => dataPoint<AlertData>(`users/${userId}/alerts`),
+  alertData: (userId: string) =>
+    dataPoint<AlertData>(`users/${userId}/alertData`),
 };
 export { db };

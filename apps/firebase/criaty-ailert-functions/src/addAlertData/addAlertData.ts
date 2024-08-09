@@ -1,6 +1,10 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 // import { logger } from 'firebase-functions/v2';
-import { addAlertDB, getAllUsersByAuthIdDB, updateAlertDB } from '../utils';
+import {
+  addAlertDataDB,
+  getAllUsersByAuthIdDB,
+  updateAlertDataDB,
+} from '../utils';
 import { AlertData } from '@ailert/model-types';
 
 export const addAlertData = onCall(
@@ -32,13 +36,13 @@ export const addAlertData = onCall(
     const userId = users[0].id;
 
     const alertData = { risk, message, image64 } as AlertData;
-    // Add alert to Firestore
-    await addAlertDB(userId, alertData);
+    // Add alert data to Firestore
+    await addAlertDataDB(userId, alertData);
 
-    // Add to the last alert
-    await updateAlertDB(userId, 'last', alertData);
+    // Add to the last alert data
+    await updateAlertDataDB(userId, 'last', alertData);
 
-    // logger.info('New Alert added');
+    // logger.info('New Alert Data added');
     return { status: 'success' };
   },
 );
