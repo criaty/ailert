@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Alert, CHILD_IN_DANGER_ALERT } from '@ailert/model-types';
+import { Alert, HAPPY_PERSON_ALERT } from '@ailert/model-types';
 
 type AlertContextType = {
   alert: Alert;
@@ -7,7 +7,7 @@ type AlertContextType = {
 };
 
 export const AlertContext = createContext<AlertContextType>({
-  alert: CHILD_IN_DANGER_ALERT,
+  alert: HAPPY_PERSON_ALERT,
   setAlert: (alert: Alert) => {
     //
   },
