@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { enqueueSnackbar } from 'notistack';
 import { Button, Stack, Typography } from '@mui/material';
 
+import { getFunctions } from '@blockium/firebase';
+import { httpsCallable } from 'firebase/functions';
+
 import { ModelContext, useImageUpdate } from '../gemini';
 import { AlertContext } from '../alert';
 import { useCurrentCustomer } from '../hooks';
@@ -47,24 +50,33 @@ export const Camera: React.FC<CameraProps> = ({
         // If no message field uses a default message
         // If alert.outputType === 'text' use the output as the message
 
-        // TODO: If actionType === "webhook" call the webhook with the image64 and the alert data
-        if (alert.actionType === 'call_webhook') {
-          const response = await fetch(alert.actionOption, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              image64,
-              key: alert.webhookKey,
-              userId: customer.id,
-              ...result,
-            }),
-          });
-          console.log(response);
+        const addAlert = httpsCallable(getFunctions(), 'addAlert');
+        try {
+          await addAlert({ ...result, image64, userId: customer.id });
+
+          // If webhook call the webhook with the image64 and the alert data
+          // if (alert.webhook) {
+          //   const response = await fetch(alert.webhook, {
+          //     method: 'POST',
+          //     headers: {
+          //       'Content-Type': 'application/json',
+          //     },
+          //     body: JSON.stringify({
+          //       key: alert.webhookKey,
+          //       image64,
+          //       ...result,
+          //     }),
+          //   });
+          //   console.log(response);
+          // }
+
+          console.log(result?.response.text());
+          //
+        } catch (error) {
+          console.log(error);
+          enqueueSnackbar(t('ui:error.onAlertAdd'), { variant: 'error' });
         }
 
-        console.log(result?.response.text());
         //
       } catch (error) {
         console.error(error);
@@ -75,7 +87,7 @@ export const Camera: React.FC<CameraProps> = ({
         generatingRef.current = false;
       }
     },
-    [alert, customer.id, onImageUpdate, t],
+    [customer.id, onImageUpdate, t],
   );
 
   const captureImage = useCallback(() => {

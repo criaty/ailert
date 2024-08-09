@@ -27,5 +27,6 @@
   "alert-title-low": "Message",
   "alert-title-medium": "Attention!",
   "alert-title-high": "Immediate Action!",
-  "alert-awaiting": "No updates at the moment..."
+  "alert-awaiting": "No updates at the moment...",
+  "error.onAlertAdd": "Error adding alert."
 }

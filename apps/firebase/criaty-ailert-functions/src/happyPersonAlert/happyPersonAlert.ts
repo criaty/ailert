@@ -1,5 +1,5 @@
 import { onRequest } from 'firebase-functions/v2/https';
-import { addAlert } from '../utils';
+import { addAlertDB } from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const validateParams = (request: any, response: any) => {
@@ -22,12 +22,13 @@ export const happyPersonAlert = onRequest(
   async (request, response) => {
     if (!validateParams(request, response)) return;
 
+    // TODO: Should not receive userId
     try {
       const { risk, message, image64, userId } = request.body;
 
       // Add alert to Firestore
       const alertData = { risk, message, image64 };
-      await addAlert(alertData, userId);
+      await addAlertDB(alertData, userId);
 
       // TODO: Add last alert
 
