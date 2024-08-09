@@ -1,8 +1,8 @@
 {
   "autistic_child_alert_title": "Autistic child in Danger",
   "autistic_child_alert_description": "This alert monitors an autistic child who may be at risk of injury. The output describes the risk level and the child's situation.",
-  "autistic_child_context_watch": "Autistic child at risk of injury",
-  "autistic_child_output_message": "Describe what the autistic child is doing",
+  "autistic_child_alert_context_watch": "Autistic child at risk of injury",
+  "autistic_child_alert_output_message": "Describe what the autistic child is doing",
   "making_mess_alert_title": "Animal Making a Mess",
   "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a textual description of the mess.",
   "making_mess_alert_context_watch": "Animal making a mess",

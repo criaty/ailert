@@ -28,5 +28,6 @@
   "alert-title-medium": "Attention!",
   "alert-title-high": "Immediate Action!",
   "alert-awaiting": "No updates at the moment...",
-  "error.onAlertAdd": "Error adding alert."
+  "error.onAlertAdd": "Error adding alert.",
+  "alert-prompt": "Check the image and find the risk for \"{{contextToWatch}}\"\nRespond in JSON format:\n{\n  \"risk\": \"\", // LOW, MEDIUM, or HIGH in uppercase\n  \"message\": \"\" // {{outputMessage}}\n}"
 }

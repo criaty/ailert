@@ -1,8 +1,8 @@
 {
   "autistic_child_alert_title": "Criança Autista em Perigo",
   "autistic_child_alert_description": "Este alerta monitora uma criança autista que pode estar em risco de lesão. A resposta descreve o nível de risco e a situação da criança.",
-  "autistic_child_context_watch": "Criança autista em risco de lesão",
-  "autistic_child_output_message": "Descreva o que a criança autista está fazendo",
+  "autistic_child_alert_context_watch": "Criança autista em risco de lesão",
+  "autistic_child_alert_output_message": "Descreva o que a criança autista está fazendo",
   "making_mess_alert_title": "Animal Fazendo Bagunça",
   "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A resposta é uma descrição textual da bagunça.",
   "making_mess_alert_context_watch": "Animal fazendo bagunça",
