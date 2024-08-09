@@ -1,6 +1,6 @@
 import { DocumentData } from 'firebase-admin/firestore';
 import admin from './admin';
-import { AlertData, User } from '@ailert/model-types';
+import { Alert, AlertData, User } from '@ailert/model-types';
 
 const converter = <T>() => ({
   toFirestore: (data: T) => data,
@@ -13,7 +13,7 @@ const dataPoint = <T extends DocumentData>(collectionPath: string) =>
 
 const db = {
   users: dataPoint<User>('users'),
-  alerts: (userId: string) => dataPoint<AlertData>(`users/${userId}/alerts`),
+  alerts: (userId: string) => dataPoint<Alert>(`users/${userId}/alerts`),
   alertData: (userId: string) =>
     dataPoint<AlertData>(`users/${userId}/alertData`),
 };

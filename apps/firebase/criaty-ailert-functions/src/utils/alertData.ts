@@ -3,10 +3,9 @@ import { db } from './db';
 
 // Add alert to user's alerts collection
 export const addAlertDataDB = async (userId: string, alertData: AlertData) => {
-  const alertDataDoc = await db
-    .alertData(userId)
-    .add({ ...alertData, createdAt: new Date().toISOString() });
-  return { id: alertDataDoc.id, ...alertData };
+  const newAlertData = { ...alertData, createdAt: new Date().toISOString() };
+  const alertDataDoc = await db.alertData(userId).add(newAlertData);
+  return { id: alertDataDoc.id, ...newAlertData };
 };
 
 export const updateAlertDataDB = async (
@@ -15,5 +14,5 @@ export const updateAlertDataDB = async (
   alertData: AlertData,
 ) => {
   const alertRef = await db.alertData(userId).doc(alertId);
-  await alertRef.set({ ...alertData, createdAt: new Date().toISOString() });
+  await alertRef.set({ ...alertData });
 };
