@@ -1,12 +1,15 @@
 export interface Alert {
+  id?: string;
   title: string;
   description: string;
   imageUrl: string;
   contextToWatch: string;
   outputMessage: string;
   voiceOption?: string;
-  webhook?: string;
+  webhookUrl?: string;
   webhookKey?: string;
+  isDefault?: boolean;
+  createdAt?: string;
 }
 
 export enum AlertRisk {
@@ -29,6 +32,7 @@ export const CHILD_IN_DANGER_ALERT: Alert = {
   imageUrl: '/images/autistic-child-alert.webp',
   contextToWatch: 'model-types:autistic_child_alert_context_watch',
   outputMessage: 'model-types:autistic_child_alert_output_message',
+  isDefault: true,
 };
 
 // Alert for an animal making a mess with voice synthesis
@@ -39,31 +43,35 @@ export const ANIMAL_MAKING_MESS_ALERT: Alert = {
   contextToWatch: 'model-types:making_mess_alert_context_watch',
   outputMessage: 'model-types:making_mess_alert_output_message',
   voiceOption: 'voice_option_1',
+  isDefault: true,
 };
 
-// Alert for an elder in risk to fall with webhook call
+// Alert for an elder in risk to fall with webhookUrl call
 export const ELDER_FALL_ALERT: Alert = {
   title: 'model-types:elder_fall_alert_title',
   description: 'model-types:elder_fall_alert_description',
   imageUrl: '/images/elder-fall-alert.webp',
   contextToWatch: 'model-types:elder_fall_alert_context_watch',
   outputMessage: 'model-types:elder_fall_alert_output_message',
-  webhook:
+  webhookUrl:
     'https://us-central1-criaty-ailert.cloudfunctions.net/elderFallAlert',
   webhookKey: 'criaty-ailert',
+  isDefault: true,
 };
 
-// Alert for happy persons with webhook call
+// Alert for happy persons with webhookUrl call
 export const HAPPY_PERSON_ALERT: Alert = {
   title: 'model-types:happy_person_alert_title',
   description: 'model-types:happy_person_alert_description',
   imageUrl: '/images/happy-persons-alert.webp',
   contextToWatch: 'model-types:happy_person_alert_context_watch',
   outputMessage: 'model-types:happy_person_alert_output_message',
-  webhook: 'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
-  // webhook:
+  webhookUrl:
+    'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
+  // webhookUrl:
   //   'https://us-central1-criaty-ailert.cloudfunctions.net/happyPersonAlert',
   webhookKey: 'criaty-ailert',
+  isDefault: true,
 };
 
 export const DEFAULT_ALERTS: Alert[] = [

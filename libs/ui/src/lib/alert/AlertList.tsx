@@ -1,16 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-import { DEFAULT_ALERTS } from '@ailert/model-types';
+import { Alert, DEFAULT_ALERTS } from '@ailert/model-types';
 import { AlertCard } from './AlertCard';
 import { AlertContext } from './AlertContext';
+import { AlertDialog } from './AlertDialog';
 
 export const AlertList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setAlert } = useContext(AlertContext);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [currAlert, setCurrAlert] = useState<Alert>({} as Alert);
 
   // TODO: Add user defined alerts. Create an AlertContext to store them
   const alerts = DEFAULT_ALERTS.map((alert) => ({
@@ -21,7 +24,7 @@ export const AlertList = () => {
     outputMessage: t(alert.outputMessage),
   }));
 
-  const onAlertClick = (alertIndex: number) => {
+  const onSelectAlert = (alertIndex: number) => {
     // Add selected alert to the context
     const alert = alerts[alertIndex];
     setAlert(alert);
@@ -29,11 +32,29 @@ export const AlertList = () => {
     navigate('/camera');
   };
 
-  const onAddAlertClick = () => {
-    // TODO: Open a dialog to add a new alert
+  const onAddAlert = () => {
+    // Open a dialog to add a new alert
+    setCurrAlert({} as Alert);
+    setOpenDialog(true);
   };
 
-  const onViewAlertsClick = () => {
+  const onEditAlert = (alertIndex: number) => {
+    // Open a dialog to edit a alert
+    const alert = alerts[alertIndex];
+    setCurrAlert(alert);
+    setOpenDialog(true);
+  };
+
+  const onDeleteAlert = (alertIndex: number) => {
+    // TODO: Delete the alert
+    const alert = alerts[alertIndex];
+  };
+
+  const onCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const onViewAlerts = () => {
     // Open a new browser tab to view all alerts
     window.open(import.meta.env.VITE_AILERT_VIEWER_APP_URL, '_blank');
   };
@@ -49,7 +70,7 @@ export const AlertList = () => {
       </Typography>
       <Stack direction="row" gap={2} mb={5}>
         <Button
-          onClick={onAddAlertClick}
+          onClick={onAddAlert}
           variant="outlined"
           sx={{ p: '2rem 3rem' }}
           fullWidth
@@ -57,7 +78,7 @@ export const AlertList = () => {
           {t('ui:button.add-alert')}
         </Button>
         <Button
-          onClick={onViewAlertsClick}
+          onClick={onViewAlerts}
           variant="outlined"
           sx={{ p: '2rem 3rem' }}
           fullWidth
@@ -89,10 +110,15 @@ export const AlertList = () => {
             title={alert.title}
             description={alert.description}
             imageUrl={alert.imageUrl}
-            onClick={() => onAlertClick(index)}
+            onClick={() => onSelectAlert(index)}
           />
         ))}
       </Box>
+      <AlertDialog
+        open={openDialog}
+        onClose={onCloseDialog}
+        alert={currAlert}
+      />
     </>
   );
 };

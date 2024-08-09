@@ -32,5 +32,19 @@
   "alert-title-high": "Immediate Action!",
   "alert-awaiting": "No updates at the moment...",
   "error.onAlertAdd": "Error adding alert.",
-  "alert-prompt": "Check the image and find the risk for \"{{contextToWatch}}\"\nRespond in JSON format:\n{\n  \"risk\": \"\", // LOW, MEDIUM, or HIGH in uppercase\n  \"message\": \"\" // {{outputMessage}}\n}"
+  "alert-prompt": "Check the image and find the risk for \"{{contextToWatch}}\"\nRespond in JSON format:\n{\n  \"risk\": \"\", // LOW, MEDIUM, or HIGH in uppercase\n  \"message\": \"\" // {{outputMessage}}\n}",
+  "dialog.new-alert": "New Alert",
+  "dialog.edit-alert": "Edit Alert",
+  "label.title": "Title",
+  "placeholder.title": "Enter a short title",
+  "label.contextToWatch": "What should be watched",
+  "placeholder.contextToWatch": "Ex: autistic child who may be at risk of injury, person with disability who may be at risk of falling, etc",
+  "label.outputMessage": "How should the message be after video analysis",
+  "placeholder.outputMessage": "Ex: Describe what the person is doing, what the animal is doing, etc",
+  "label.description": "Description",
+  "placeholder.description": "Enter a description explaining the purpose and/or operation of the alert",
+  "label.webhookUrl": "Webhook URL",
+  "placeholder.webhookUrl": "Enter the Webhook URL to send the alert analysis",
+  "label.webhookKey": "Webhook Key",
+  "placeholder.webhookKey": "Enter the Webhook key"
 }

@@ -58,8 +58,8 @@ export const Camera: React.FC<CameraProps> = ({
           await addAlert({ ...alertData, image64 });
 
           // If webhook call the webhook with the image64 and the alert data
-          if (alert.webhook) {
-            const response = await fetch(alert.webhook, {
+          if (alert.webhookUrl) {
+            const response = await fetch(alert.webhookUrl, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

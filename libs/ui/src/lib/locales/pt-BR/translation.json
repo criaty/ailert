@@ -32,5 +32,19 @@
   "alert-title-high": "Ação Imediata!",
   "alert-awaiting": "Nenhuma atualização no momento...",
   "error.onAlertAdd": "Erro ao adicionar alerta.",
-  "alert-prompt": "Verifique a imagem e encontre o risco para \"{{contextToWatch}}\"\nResponda no formato JSON:\n{\n  \"risk\": \"\", // LOW, MEDIUM, ou HIGH em maiúsculo\n  \"message\": \"\" // {{outputMessage}}\n}"
+  "alert-prompt": "Verifique a imagem e encontre o risco para \"{{contextToWatch}}\"\nResponda no formato JSON:\n{\n  \"risk\": \"\", // LOW, MEDIUM, ou HIGH em maiúsculo\n  \"message\": \"\" // {{outputMessage}}\n}",
+  "dialog.new-alert": "Novo Alerta",
+  "dialog.edit-alert": "Editar Alerta",
+  "label.title": "Título",
+  "placeholder.title": "Insira um título curto",
+  "label.contextToWatch": "O que deve ser observado",
+  "placeholder.contextToWatch": "Ex: criança autista que pode estar em risco de lesão, pessoa com deficiência que pode estar em risco de queda, etc",
+  "label.outputMessage": "Como deve ser a mensagem após análise do vídeo",
+  "placeholder.outputMessage": "Ex: Descreva o que a pessoa está fazendo, o que o animal está fazendo, etc",
+  "label.description": "Descrição",
+  "placeholder.description": "Insira uma descrição explicando o propósito e/ou funcionamento do alerta",
+  "label.webhookUrl": "URL do Webhook",
+  "placeholder.webhookUrl": "Insira a URL do Webhook para enviar a análise dos alertas",
+  "label.webhookKey": "Chave do Webhook",
+  "placeholder.webhookKey": "Insira a chave do Webhook"
 }
