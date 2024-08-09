@@ -19,14 +19,9 @@ type CameraProps = {
   height?: number;
 };
 
-const DEFAULT_INTERVAL = 4000; // 4 seconds
-const DEFAULT_QUALITY = 0.5;
-const DEFAULT_WIDTH = 380; // 384 or less counts 258 tokens/image
-const DEFAULT_HEIGHT = 285;
-
 export const Camera: React.FC<CameraProps> = ({
-  width = DEFAULT_WIDTH,
-  height = DEFAULT_HEIGHT,
+  width = import.meta.env.VITE_DEFAULT_IMAGE_WIDTH,
+  height = import.meta.env.VITE_DEFAULT_IMAGE_HEIGHT,
 }) => {
   const { t } = useTranslation();
   const [started, setStarted] = useState(false);
@@ -106,7 +101,10 @@ export const Camera: React.FC<CameraProps> = ({
       .getContext('2d')
       ?.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
-    const image64 = canvas.toDataURL('image/jpeg', DEFAULT_QUALITY);
+    const image64 = canvas.toDataURL(
+      'image/jpeg',
+      import.meta.env.VITE_DEFAULT_IMAGE_QUALITY,
+    );
     onCapture(image64.split(',')[1]);
   }, [height, width, onCapture]);
 
@@ -130,7 +128,9 @@ export const Camera: React.FC<CameraProps> = ({
       () => {
         captureImage();
       },
-      updateInterval ? updateInterval * 1000 : DEFAULT_INTERVAL,
+      updateInterval
+        ? updateInterval * 1000
+        : import.meta.env.VITE_DEFAULT_INTERVAL,
     );
   };
 
