@@ -1,5 +1,5 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
-import { logger } from 'firebase-functions/v2';
+// import { logger } from 'firebase-functions/v2';
 import { addAlertDB, getAllUsersByAuthIdDB, updateAlertDB } from '../utils';
 import { AlertData } from '@ailert/model-types';
 
@@ -38,7 +38,7 @@ export const addAlert = onCall(
     // Add to the last alert
     await updateAlertDB(userId, 'last', alertData);
 
-    logger.info('New Alert added');
+    // logger.info('New Alert added');
     return { status: 'success' };
   },
 );

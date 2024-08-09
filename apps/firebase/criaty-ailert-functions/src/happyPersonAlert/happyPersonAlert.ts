@@ -1,5 +1,5 @@
 import { onRequest } from 'firebase-functions/v2/https';
-import { logger } from 'firebase-functions/v2';
+// import { logger } from 'firebase-functions/v2';
 
 const DEFAULT_HOOK_KEY = 'criaty-ailert';
 
@@ -28,7 +28,7 @@ export const happyPersonAlert = onRequest(
       // const { risk, message, image64 } = request.body;
       // TODO: Save the alert data to /webhooks/happyPersonAlert/alerts
 
-      logger.info('happyPersonAlert webhook called');
+      // logger.info('happyPersonAlert webhook called');
 
       response.status(200).send('happyPersonAlert webhook called');
     } catch (error) {
