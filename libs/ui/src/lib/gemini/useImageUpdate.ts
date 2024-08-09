@@ -11,7 +11,7 @@ export const useImageUpdate = () => {
   const onImageUpdate = async (image64: string) => {
     const image = {
       inlineData: {
-        data: image64.split(',')[1],
+        data: image64,
         mimeType: 'image/jpeg',
       },
     };

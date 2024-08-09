@@ -20,7 +20,7 @@ type CameraProps = {
 };
 
 const DEFAULT_INTERVAL = 4000; // 4 seconds
-const DEFAULT_QUALITY = 0.5;
+const DEFAULT_QUALITY = 0.2;
 
 export const Camera: React.FC<CameraProps> = ({
   width = 320,
@@ -105,7 +105,7 @@ export const Camera: React.FC<CameraProps> = ({
       ?.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
     const image64 = canvas.toDataURL('image/jpeg', DEFAULT_QUALITY);
-    onCapture(image64);
+    onCapture(image64.split(',')[1]);
   }, [height, width, onCapture]);
 
   useEffect(() => {
