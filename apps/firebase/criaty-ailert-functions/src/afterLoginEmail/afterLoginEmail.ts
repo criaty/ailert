@@ -3,7 +3,7 @@ import { UserRecord } from 'firebase-admin/auth';
 
 import { User } from '@ailert/model-types';
 
-import { getAuthUser, getOrCreateUserByAuthId, updateUser } from '../utils';
+import { getAuthUser, getOrCreateUserByAuthIdDB, updateUserDB } from '../utils';
 import {
   validateAuthEmail,
   validateAuthId,
@@ -37,7 +37,7 @@ export const afterLoginEmail = onRequest(
         authUser.email ||
         authUser.phoneNumber ||
         'No name';
-      const user = (await getOrCreateUserByAuthId(
+      const user = (await getOrCreateUserByAuthIdDB(
         authUser.uid,
         userName,
         authUser.displayName,
@@ -47,7 +47,7 @@ export const afterLoginEmail = onRequest(
       if (!validateUser(user, response)) return;
 
       // Update app user's auth id in Firestore
-      await updateUser(user.id, {
+      await updateUserDB(user.id, {
         authId: authUser.uid,
         // Used to create the field to search:
         searchName: userName.toLowerCase(), // TODO: Can be removed in future.

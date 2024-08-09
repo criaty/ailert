@@ -8,7 +8,7 @@ export const USER_ERROR_NON_UNIQUE_USER = 'USER_ERROR_NON_UNIQUE_USER';
 export const USER_ERROR_NOT_FOUND = 'USER_ERROR_NOT_FOUND';
 
 // Save user's data (name, phone, email) in Firestore at users collection
-export const createUser = async (
+export const createUserDB = async (
   name: string,
   displayName?: string,
   phone?: string,
@@ -28,7 +28,7 @@ export const createUser = async (
 };
 
 // Get a user data by userId
-export const getUser = async (userId: string) => {
+export const getUserDB = async (userId: string) => {
   const userRef = await db.users.doc(userId);
   const userDoc = await userRef.get();
   if (!userDoc.exists) {
@@ -41,7 +41,7 @@ export const getUser = async (userId: string) => {
   return user;
 };
 
-export const getAllUsersByAuthId = async (authId: string) => {
+export const getAllUsersByAuthIdDB = async (authId: string) => {
   const userQuery = await db.users.where('authId', '==', authId).get();
   return userQuery.docs.map((userDoc) => {
     return { ...(userDoc.data() as User), id: userDoc.id };
@@ -49,21 +49,21 @@ export const getAllUsersByAuthId = async (authId: string) => {
 };
 
 // Get a user data filtered by authId, creating if it doesn't exist
-export const getOrCreateUser = async (
+export const getOrCreateUserDB = async (
   authId: string,
   name: string,
   displayName?: string,
   phone?: string,
   email?: string,
 ) => {
-  const users = await getAllUsersByAuthId(authId);
+  const users = await getAllUsersByAuthIdDB(authId);
 
   switch (users.length) {
     case 0:
-      return await createUser(name, displayName || name, phone, email);
+      return await createUserDB(name, displayName || name, phone, email);
 
     case 1:
-      await updateUser(users[0].id, { name, displayName, phone, email });
+      await updateUserDB(users[0].id, { name, displayName, phone, email });
       return users[0];
 
     default:
@@ -72,18 +72,18 @@ export const getOrCreateUser = async (
 };
 
 // Get a user data filtered by email, creating if it doesn't exist
-export const getOrCreateUserByAuthId = async (
+export const getOrCreateUserByAuthIdDB = async (
   authId: string,
   name: string,
   displayName?: string,
   email?: string,
   phone?: string,
 ) => {
-  const users = await getAllUsersByAuthId(authId);
+  const users = await getAllUsersByAuthIdDB(authId);
 
   switch (users.length) {
     case 0:
-      return await createUser(name, displayName || name, phone, email);
+      return await createUserDB(name, displayName || name, phone, email);
 
     case 1:
       if (
@@ -93,7 +93,7 @@ export const getOrCreateUserByAuthId = async (
         users[0].phone !== phone
       ) {
         // Update user
-        await updateUser(users[0].id, { name, displayName, phone, email });
+        await updateUserDB(users[0].id, { name, displayName, phone, email });
         users[0].name = name;
       }
 
@@ -104,7 +104,7 @@ export const getOrCreateUserByAuthId = async (
   }
 };
 
-export const updateUser = async (userId: string, dataToUpdate: object) => {
+export const updateUserDB = async (userId: string, dataToUpdate: object) => {
   const userRef = db.users.doc(userId);
   await userRef.update(dataToUpdate);
 };
