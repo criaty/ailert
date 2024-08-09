@@ -56,7 +56,7 @@ export const ELDER_FALL_ALERT: Alert = {
 export const HAPPY_PERSON_ALERT: Alert = {
   title: 'model-types:happy_person_alert_title',
   description: 'model-types:happy_person_alert_description',
-  imageUrl: '/images/elder-fall-alert.webp',
+  imageUrl: '/images/happy-persons-alert.webp',
   contextToWatch: 'model-types:happy_person_alert_context_watch',
   outputMessage: 'model-types:happy_person_alert_output_message',
   webhook: 'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
