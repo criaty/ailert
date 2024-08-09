@@ -1,10 +1,10 @@
 {
   "autistic_child_alert_title": "Autistic child in Danger",
-  "autistic_child_alert_description": "This alert monitors an autistic child who may be at risk of injury. The output is a JSON object { \"risk\": \"\", \"message\": \"\" } describing the risk level and the situation of the child. The action is to popup a message on the screen if risk is medium or high.",
+  "autistic_child_alert_description": "This alert monitors an autistic child who may be at risk of injury. The output describes the risk level and the child's situation.",
   "making_mess_alert_title": "Animal Making a Mess",
-  "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a text description of the mess, and the action is to synthesize the description into a voice message.",
+  "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a textual description of the mess.",
   "elder_fall_alert_title": "Elderly Fall",
-  "elder_fall_alert_description": "This alert monitors an elder getting up from bed with a risk of falling. The output is a JSON object describing the risk level and the situation of the elder. The action is to call a webhook passing the JSON object. You can monitor this at https://elderfall.criaty.com.",
-  "happy_person_alert_title": "Person Smiling",
-  "happy_person_alert_description": "This alert monitors people who are smiling. The output is a JSON object describing the risk level and the situation. The action is to call a webhook passing the JSON object. You can monitor this at https://personsmiling.criaty.com."
+  "elder_fall_alert_description": "This alert monitors an elderly person getting up from bed at risk of falling. The output describes the elderly person's situation. A webhook is also called sending the output. You can monitor this at https://ailert-viewer.criaty.com.",
+  "happy_person_alert_title": "Happy Persons",
+  "happy_person_alert_description": "This alert monitors people who are happy. The output describes the happiness level. A webhook is also called sending the output. You can monitor this at https://ailert-viewer.criaty.com."
 }

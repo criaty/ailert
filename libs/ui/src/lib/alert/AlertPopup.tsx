@@ -15,7 +15,7 @@ import { TransitionProps } from '@mui/material/transitions';
 
 import { doc, onSnapshot } from 'firebase/firestore';
 import { getFirestore } from '@blockium/firebase';
-import { AlertData } from '@ailert/model-types';
+import { AlertData, AlertRisk } from '@ailert/model-types';
 import { useCurrentCustomer } from '../hooks';
 
 const Transition = forwardRef(function Transition(
@@ -35,15 +35,15 @@ export const AlertPopup = () => {
   const [open, setOpen] = useState(false);
   const [alertData, setAlertData] = useState<AlertData | null>(null);
   const title =
-    alertData?.risk === 'low'
+    alertData?.risk === AlertRisk.LOW
       ? t('ui:alert-title-low')
-      : alertData?.risk === 'medium'
+      : alertData?.risk === AlertRisk.MEDIUM
         ? t('ui:alert-title-medium')
         : t('ui:alert-title-high');
   const color =
-    alertData?.risk === 'low'
+    alertData?.risk === AlertRisk.LOW
       ? theme.palette.background.paper
-      : alertData?.risk === 'medium'
+      : alertData?.risk === AlertRisk.MEDIUM
         ? '#facc15' // yellow
         : '#f87171'; // red
 
@@ -52,7 +52,7 @@ export const AlertPopup = () => {
       doc(getFirestore(), `users/${customer.id}/alerts`, 'last'),
       (doc) => {
         const alertData = doc.data() as AlertData;
-        alertData && alertData.risk !== 'low' && handleOpen(alertData);
+        alertData && alertData.risk !== AlertRisk.LOW && handleOpen(alertData);
       },
     );
     return () => unsub();

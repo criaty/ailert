@@ -1,10 +1,10 @@
 {
   "autistic_child_alert_title": "Criança Autista em Perigo",
-  "autistic_child_alert_description": "Este alerta monitora uma criança autista que pode estar em risco de lesão. A saída é um objeto JSON { \"risk\": \"\", \"message\": \"\" } descrevendo o nível de risco e a situação da criança. A ação é exibir uma mensagem na tela se o risco for médio ou alto.",
+  "autistic_child_alert_description": "Este alerta monitora uma criança autista que pode estar em risco de lesão. A resposta descreve o nível de risco e a situação da criança.",
   "making_mess_alert_title": "Animal Fazendo Bagunça",
-  "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A saída é uma descrição textual da bagunça, e a ação é sintetizar a descrição em uma mensagem de voz.",
+  "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A resposta é uma descrição textual da bagunça.",
   "elder_fall_alert_title": "Queda de Idoso",
-  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A saída é um objeto JSON descrevendo o nível de risco e a situação do idoso. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
-  "happy_person_alert_title": "Pessoa sorrindo",
-  "happy_person_alert_description": "Este alerta monitora pessoas que estejam sorrindo. A saída é um objeto JSON descrevendo o nível de risco e a situação. A ação é chamar um webhook passando o objeto JSON. Você pode monitorar isso em https://ailert-viewer.criaty.com."
+  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A resposta descreve a situação do idoso. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
+  "happy_person_alert_title": "Pessoa feliz",
+  "happy_person_alert_description": "Este alerta monitora pessoas que estejam felizes. A resposta descreve o nível de felicidade. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com."
 }
