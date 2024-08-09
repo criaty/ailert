@@ -38,6 +38,10 @@ export const AlertList = () => {
     window.open(import.meta.env.VITE_AILERT_VIEWER_APP_URL, '_blank');
   };
 
+  const onCameraClick = () => {
+    navigate('/camera');
+  };
+
   return (
     <>
       <Typography variant="h3" sx={{ mb: 2 }}>
@@ -59,6 +63,14 @@ export const AlertList = () => {
           fullWidth
         >
           {t('ui:button.view-alerts')}
+        </Button>
+        <Button
+          onClick={onCameraClick}
+          variant="outlined"
+          sx={{ p: '2rem 3rem' }}
+          fullWidth
+        >
+          {t('ui:button.camera')}
         </Button>
       </Stack>
       <Box
