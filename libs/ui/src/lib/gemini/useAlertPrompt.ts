@@ -17,6 +17,5 @@ export const useAlertPrompt = (alert: Alert): string => {
   // }
   //   `;
 
-  console.log(prompt);
   return prompt;
 };

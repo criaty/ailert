@@ -1,9 +1,11 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions/v2';
-import { addAlertDB, getAllUsersByAuthIdDB } from '../utils';
+import { addAlertDB, getAllUsersByAuthIdDB, updateAlertDB } from '../utils';
+import { AlertData } from '@ailert/model-types';
 
 export const addAlert = onCall(
-  { cors: [/criaty\.com$/], concurrency: 80 },
+  // { cors: [/criaty\.com$/], concurrency: 80 },
+  { cors: true, concurrency: 80 },
   async (request) => {
     // Get data passed from the client.
     const { risk, message, image64 } = request.data;
@@ -29,12 +31,14 @@ export const addAlert = onCall(
     }
     const userId = users[0].id;
 
-    const alertData = { risk, message, image64 };
-    addAlertDB(alertData, userId).then(() => {
-      // TODO: Add to the last alert
+    const alertData = { risk, message, image64 } as AlertData;
+    // Add alert to Firestore
+    await addAlertDB(userId, alertData);
 
-      logger.info('New Alert added');
-      return { status: 'success' };
-    });
+    // Add to the last alert
+    await updateAlertDB(userId, 'last', alertData);
+
+    logger.info('New Alert added');
+    return { status: 'success' };
   },
 );

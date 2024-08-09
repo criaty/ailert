@@ -19,6 +19,7 @@ export interface AlertData {
   risk: AlertRisk;
   message: string;
   image64: string;
+  createdAt: string;
 }
 
 // Alert for a child in danger

@@ -8,6 +8,7 @@ import { httpsCallable } from 'firebase/functions';
 
 import { ModelContext, useImageUpdate } from '../gemini';
 import { AlertContext } from '../alert';
+import { AlertData, AlertRisk } from '@ailert/model-types';
 
 // TODO: 4. Get front or back camera if any
 // TODO: Adjust camera width and height to the screen size
@@ -40,6 +41,13 @@ export const Camera: React.FC<CameraProps> = ({
       generatingRef.current = true;
       try {
         const result = await onImageUpdate(image64);
+        const responseText = result?.response.text();
+        if (!responseText) return;
+        console.log(responseText);
+
+        const alertData = JSON.parse(responseText) as AlertData;
+        // Do not add low risk alerts to the database
+        if (alertData.risk === AlertRisk.LOW) return;
 
         // TODO: Show a popup message if risk is medium(yellow) or high(red)
         // If alert.actionType === 'display_text'
@@ -50,25 +58,23 @@ export const Camera: React.FC<CameraProps> = ({
 
         const addAlert = httpsCallable(getFunctions(), 'addAlert');
         try {
-          await addAlert({ ...result, image64 });
+          await addAlert({ ...alertData, image64 });
 
           // If webhook call the webhook with the image64 and the alert data
-          // if (alert.webhook) {
-          //   const response = await fetch(alert.webhook, {
-          //     method: 'POST',
-          //     headers: {
-          //       'Content-Type': 'application/json',
-          //     },
-          //     body: JSON.stringify({
-          //       key: alert.webhookKey,
-          //       image64,
-          //       ...result,
-          //     }),
-          //   });
-          //   console.log(response);
-          // }
-
-          console.log(result?.response.text());
+          if (alert.webhook) {
+            const response = await fetch(alert.webhook, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                key: alert.webhookKey,
+                ...alertData,
+                image64,
+              }),
+            });
+            console.log('webhook response', response);
+          }
           //
         } catch (error) {
           console.log(error);
@@ -85,7 +91,7 @@ export const Camera: React.FC<CameraProps> = ({
         generatingRef.current = false;
       }
     },
-    [onImageUpdate, t],
+    [alert, onImageUpdate, t],
   );
 
   const captureImage = useCallback(() => {
