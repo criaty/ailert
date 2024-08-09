@@ -1,10 +1,18 @@
 {
   "autistic_child_alert_title": "Criança Autista em Perigo",
   "autistic_child_alert_description": "Este alerta monitora uma criança autista que pode estar em risco de lesão. A resposta descreve o nível de risco e a situação da criança.",
+  "autistic_child_context_watch": "Criança autista em risco de lesão",
+  "autistic_child_output_message": "Descreva o que a criança autista está fazendo",
   "making_mess_alert_title": "Animal Fazendo Bagunça",
   "making_mess_alert_description": "Este alerta monitora um animal causando bagunça. A resposta é uma descrição textual da bagunça.",
+  "making_mess_alert_context_watch": "Animal fazendo bagunça",
+  "making_mess_alert_output_message": "Descreva a bagunça que o animal está fazendo",
   "elder_fall_alert_title": "Queda de Idoso",
   "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A resposta descreve a situação do idoso. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
-  "happy_person_alert_title": "Pessoa feliz",
-  "happy_person_alert_description": "Este alerta monitora pessoas que estejam felizes. A resposta descreve o nível de felicidade. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com."
+  "elder_fall_alert_context_watch": "Idoso se levantando da cama com risco de queda",
+  "elder_fall_alert_output_message": "Descreva a situação do idoso",
+  "happy_person_alert_title": "Pessoa Feliz",
+  "happy_person_alert_description": "Este alerta monitora pessoas que estejam felizes. A resposta descreve o nível de felicidade. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
+  "happy_person_alert_context_watch": "Uma ou mais pessoas felizes. Se as pessoas estiverem moderadamente felizes, o risco é médio. Se as pessoas estiverem muito felizes, o risco é alto.",
+  "happy_person_alert_output_message": "Descreva a situação das pessoas. Adicione \"UM DIA FELIZ!\" no início se o risco for alto"
 }

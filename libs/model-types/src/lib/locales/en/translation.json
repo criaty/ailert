@@ -1,10 +1,18 @@
 {
   "autistic_child_alert_title": "Autistic child in Danger",
   "autistic_child_alert_description": "This alert monitors an autistic child who may be at risk of injury. The output describes the risk level and the child's situation.",
+  "autistic_child_context_watch": "Autistic child at risk of injury",
+  "autistic_child_output_message": "Describe what the autistic child is doing",
   "making_mess_alert_title": "Animal Making a Mess",
   "making_mess_alert_description": "This alert monitors an animal causing a mess. The output is a textual description of the mess.",
+  "making_mess_alert_context_watch": "Animal making a mess",
+  "making_mess_alert_output_message": "Describe the mess the animal is making",
   "elder_fall_alert_title": "Elderly Fall",
   "elder_fall_alert_description": "This alert monitors an elderly person getting up from bed at risk of falling. The output describes the elderly person's situation. A webhook is also called sending the output. You can monitor this at https://ailert-viewer.criaty.com.",
-  "happy_person_alert_title": "Happy Persons",
-  "happy_person_alert_description": "This alert monitors people who are happy. The output describes the happiness level. A webhook is also called sending the output. You can monitor this at https://ailert-viewer.criaty.com."
+  "elder_fall_alert_context_watch": "Elder getting up from bed with a risk to fall",
+  "elder_fall_alert_output_message": "The elder's situation",
+  "happy_person_alert_title": "Happy Person",
+  "happy_person_alert_description": "This alert monitors people who are happy. The output describes the happiness level. A webhook is also called sending the output. You can monitor this at https://ailert-viewer.criaty.com.",
+  "happy_person_alert_context_watch": "One or more happy persons. If persons are moderately happy, the risk is medium. If persons are very happy, the risk is high.",
+  "happy_person_alert_output_message": "Describe the persons' situation. Add \"A HAPPY DAY!\" in the beginning if risk is high"
 }

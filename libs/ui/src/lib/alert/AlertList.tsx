@@ -17,6 +17,8 @@ export const AlertList = () => {
     ...alert,
     title: t(alert.title),
     description: t(alert.description),
+    contextToWatch: t(alert.contextToWatch),
+    outputMessage: t(alert.outputMessage),
   }));
 
   const onAlertClick = (alertIndex: number) => {

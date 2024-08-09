@@ -26,8 +26,8 @@ export const CHILD_IN_DANGER_ALERT: Alert = {
   title: 'model-types:autistic_child_alert_title',
   description: 'model-types:autistic_child_alert_description',
   imageUrl: '/images/autistic-child-alert.webp',
-  contextToWatch: 'Autistic child at risk of injury',
-  outputMessage: 'Describe what the autistic child is doing',
+  contextToWatch: 'model-types:autistic_child_alert_context_watch',
+  outputMessage: 'model-types:autistic_child_alert_output_message',
 };
 
 // Alert for an animal making a mess with voice synthesis
@@ -35,8 +35,8 @@ export const ANIMAL_MAKING_MESS_ALERT: Alert = {
   title: 'model-types:making_mess_alert_title',
   description: 'model-types:making_mess_alert_description',
   imageUrl: '/images/animal-causing-mess-alert.webp',
-  contextToWatch: 'Animal making a mess',
-  outputMessage: 'Describe the mess the animal is making',
+  contextToWatch: 'model-types:making_mess_alert_context_watch',
+  outputMessage: 'model-types:making_mess_alert_output_message',
   voiceOption: 'voice_option_1',
 };
 
@@ -45,8 +45,8 @@ export const ELDER_FALL_ALERT: Alert = {
   title: 'model-types:elder_fall_alert_title',
   description: 'model-types:elder_fall_alert_description',
   imageUrl: '/images/elder-fall-alert.webp',
-  contextToWatch: 'Elder is getting up from bed with a risk to fall',
-  outputMessage: "The elder's situation",
+  contextToWatch: 'model-types:elder_fall_alert_context_watch',
+  outputMessage: 'model-types:elder_fall_alert_output_message',
   webhook:
     'https://us-central1-criaty-ailert.cloudfunctions.net/elderFallAlert',
   webhookKey: 'criaty-ailert',
@@ -57,10 +57,8 @@ export const HAPPY_PERSON_ALERT: Alert = {
   title: 'model-types:happy_person_alert_title',
   description: 'model-types:happy_person_alert_description',
   imageUrl: '/images/elder-fall-alert.webp',
-  contextToWatch:
-    'One or more happy persons. If persons are moderately happy, the risk is medium. If persons are very happy, the risk is high.',
-  outputMessage:
-    'Describe the persons\' situation. Add "A HAPPY DAY!" in the beginning if risk is high',
+  contextToWatch: 'model-types:happy_person_alert_context_watch',
+  outputMessage: 'model-types:happy_person_alert_output_message',
   webhook: 'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
   // webhook:
   //   'https://us-central1-criaty-ailert.cloudfunctions.net/happyPersonAlert',
