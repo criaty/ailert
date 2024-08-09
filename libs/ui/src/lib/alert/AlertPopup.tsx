@@ -1,6 +1,7 @@
 import { forwardRef, ReactElement, Ref, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -93,6 +94,14 @@ export const AlertPopup = () => {
           >
             {alertData?.message}
           </DialogContentText>
+          <Box width="100%" display="flex" justifyContent="center" mt={2}>
+            {alertData?.image64 && (
+              <img
+                src={`data:image/jpeg;base64,${alertData.image64}`}
+                alt="Alert"
+              />
+            )}
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button color="inherit" onClick={handleClose}>
