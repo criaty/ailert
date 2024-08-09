@@ -34,7 +34,6 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
   // Fields
   const [title, setTitle] = useState(alert.title || '');
   const [description, setDescription] = useState(alert.description || '');
-  const [imageUrl, setImageUrl] = useState(alert.imageUrl || '');
   const [contextToWatch, setContextToWatch] = useState(
     alert.contextToWatch || '',
   );
@@ -43,7 +42,10 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
   const [webhookKey, setWebhookKey] = useState(alert.webhookKey || '');
 
   const isDisabled = () => {
-    // TODO
+    // Return true if any of the required fields are empty
+    if (!title || !description || !contextToWatch || !outputMessage) {
+      return true;
+    }
     return false;
   };
 
@@ -58,6 +60,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
     <IconButton
       sx={{ visibility: value ? 'visible' : 'hidden' }}
       onClick={() => setValue('')}
+      disabled={alert.isDefault}
     >
       <ClearIcon />
     </IconButton>
@@ -108,6 +111,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
             endAdornment: getEndAdornment(title, setTitle),
           }}
           required
+          disabled={alert.isDefault}
         />
         <TextField
           multiline
@@ -123,6 +127,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
             endAdornment: getEndAdornment(contextToWatch, setContextToWatch),
           }}
           required
+          disabled={alert.isDefault}
         />
         <TextField
           multiline
@@ -138,6 +143,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
             endAdornment: getEndAdornment(outputMessage, setOutputMessage),
           }}
           required
+          disabled={alert.isDefault}
         />
         <TextField
           multiline
@@ -153,20 +159,8 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
             endAdornment: getEndAdornment(description, setDescription),
           }}
           required
+          disabled={alert.isDefault}
         />
-        {/* <TextField
-          margin="dense"
-          label={t('ui:label.imageUrl')}
-          placeholder={t('ui:placeholder.imageUrl')}
-          type="text"
-          fullWidth
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          InputProps={{
-            endAdornment: getEndAdornment(imageUrl, setImageUrl),
-          }}
-          required
-        /> */}
         <TextField
           margin="dense"
           label={t('ui:label.webhookUrl')}
@@ -178,6 +172,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
           InputProps={{
             endAdornment: getEndAdornment(webhookUrl || '', setWebhookUrl),
           }}
+          disabled={alert.isDefault}
         />
         <TextField
           margin="dense"
@@ -190,6 +185,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
           InputProps={{
             endAdornment: getEndAdornment(webhookKey || '', setWebhookKey),
           }}
+          disabled={alert.isDefault}
         />
       </DialogContent>
     </Dialog>

@@ -7,6 +7,8 @@
   "button.add-alert": "Criar Alerta",
   "button.view-alerts": "Visualizar Alertas",
   "button.camera": "Mostrar Camera",
+  "button.edit": "Editar",
+  "button.delete": "Excluir",
   "label.no-api-key-1": "Nenhuma chave da API foi encontrada.",
   "label.no-api-key-2": "Clique no botão abaixo para adicionar uma chave da API.",
   "settings-title": "Configurações",

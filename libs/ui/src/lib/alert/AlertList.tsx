@@ -38,18 +38,6 @@ export const AlertList = () => {
     setOpenDialog(true);
   };
 
-  const onEditAlert = (alertIndex: number) => {
-    // Open a dialog to edit a alert
-    const alert = alerts[alertIndex];
-    setCurrAlert(alert);
-    setOpenDialog(true);
-  };
-
-  const onDeleteAlert = (alertIndex: number) => {
-    // TODO: Delete the alert
-    const alert = alerts[alertIndex];
-  };
-
   const onCloseDialog = () => {
     setOpenDialog(false);
   };
@@ -107,9 +95,7 @@ export const AlertList = () => {
         {alerts.map((alert, index) => (
           <AlertCard
             key={index}
-            title={alert.title}
-            description={alert.description}
-            imageUrl={alert.imageUrl}
+            alert={alert}
             onClick={() => onSelectAlert(index)}
           />
         ))}
