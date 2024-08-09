@@ -53,9 +53,9 @@ export const Camera: React.FC<CameraProps> = ({
         // If no message field uses a default message
         // If alert.outputType === 'text' use the output as the message
 
-        const addAlert = httpsCallable(getFunctions(), 'addAlert');
+        const addAlertData = httpsCallable(getFunctions(), 'addAlertData');
         try {
-          await addAlert({ ...alertData, image64 });
+          await addAlertData({ ...alertData, image64 });
 
           // If webhook call the webhook with the image64 and the alert data
           if (alert.webhookUrl) {

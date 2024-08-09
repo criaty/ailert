@@ -3,7 +3,7 @@ import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import { addAlertDB, getAllUsersByAuthIdDB, updateAlertDB } from '../utils';
 import { AlertData } from '@ailert/model-types';
 
-export const addAlert = onCall(
+export const addAlertData = onCall(
   // { cors: [/criaty\.com$/], concurrency: 80 },
   { cors: true, concurrency: 80 },
   async (request) => {
