@@ -20,11 +20,13 @@ type CameraProps = {
 };
 
 const DEFAULT_INTERVAL = 4000; // 4 seconds
-const DEFAULT_QUALITY = 0.2;
+const DEFAULT_QUALITY = 0.5;
+const DEFAULT_WIDTH = 380; // 384 or less counts 258 tokens/image
+const DEFAULT_HEIGHT = 285;
 
 export const Camera: React.FC<CameraProps> = ({
-  width = 320,
-  height = 240,
+  width = DEFAULT_WIDTH,
+  height = DEFAULT_HEIGHT,
 }) => {
   const { t } = useTranslation();
   const [started, setStarted] = useState(false);
