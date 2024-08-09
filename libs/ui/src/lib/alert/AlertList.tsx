@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 
 import { DEFAULT_ALERTS } from '@ailert/model-types';
 import { AlertCard } from './AlertCard';
@@ -29,11 +29,38 @@ export const AlertList = () => {
     navigate('/camera');
   };
 
+  const onAddAlertClick = () => {
+    // TODO: Open a dialog to add a new alert
+  };
+
+  const onViewAlertsClick = () => {
+    // Open a new browser tab to view all alerts
+    window.open(import.meta.env.VITE_AILERT_VIEWER_APP_URL, '_blank');
+  };
+
   return (
     <>
-      <Typography variant="h3" sx={{ mb: 5 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>
         {t('ui:alert-list-title')}
       </Typography>
+      <Stack direction="row" gap={2} mb={5}>
+        <Button
+          onClick={onAddAlertClick}
+          variant="outlined"
+          sx={{ p: '2rem 3rem' }}
+          fullWidth
+        >
+          {t('ui:button.add-alert')}
+        </Button>
+        <Button
+          onClick={onViewAlertsClick}
+          variant="outlined"
+          sx={{ p: '2rem 3rem' }}
+          fullWidth
+        >
+          {t('ui:button.view-alerts')}
+        </Button>
+      </Stack>
       <Box
         component={'div'}
         gap={4}
@@ -42,8 +69,6 @@ export const AlertList = () => {
           xs: 'repeat(1, 1fr)',
           md: 'repeat(3, 1fr)',
         }}
-        // bgcolor="background.paper"
-        // borderRadius={{ xs: '0px 0px 16px 16px', md: '0px 16px 16px 0px' }}
         py={0}
       >
         {alerts.map((alert, index) => (

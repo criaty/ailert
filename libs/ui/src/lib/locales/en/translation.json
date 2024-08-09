@@ -4,6 +4,8 @@
   "button.save": "Save",
   "button.close": "Close",
   "button.settings": "Settings",
+  "button.add-alert": "Create Alert",
+  "button.view-alerts": "View Alerts",
   "label.no-api-key-1": "No API key found.",
   "label.no-api-key-2": "Click the button below to add an API key.",
   "settings-title": "Settings",
