@@ -1,1 +1,2 @@
-export * from './home';
+export * from './alerts';
+export * from './monitor';

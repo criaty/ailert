@@ -1,4 +1,5 @@
 {
-  "side-menu.home": "Home",
+  "side-menu.monitor": "Monitor",
+  "side-menu.alerts": "Alerts",
   "error.no-customer": "Customer not found"
 }

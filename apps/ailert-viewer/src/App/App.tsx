@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { Home as HomeIcon } from '@mui/icons-material';
+import { Monitor as MonitorIcon } from '@mui/icons-material';
+import { Warning as AlertsIcon } from '@mui/icons-material';
 
 import { AppBase, AuthConfig } from '@blockium/appbase';
 import { createPaletteConfig } from '@blockium/theme';
@@ -11,7 +12,7 @@ import { AppLogo, isDefined, useCurrentCustomer } from '@ailert/ui';
 import { getUserDB } from '@ailert/model';
 import { User } from '@ailert/model-types';
 
-import { HomePage } from '../pages';
+import { AlertsPage, MonitorPage } from '../pages';
 import { Signout } from './Signout';
 
 export const App: React.FC = (props) => {
@@ -78,16 +79,24 @@ export const App: React.FC = (props) => {
     sideBar: {
       sideMenu: [
         {
-          label: t('side-menu.home'),
+          label: t('side-menu.monitor'),
           href: '/',
-          icon: <HomeIcon />,
+          icon: <MonitorIcon />,
+        },
+        {
+          label: t('side-menu.alerts'),
+          href: '/alerts',
+          icon: <AlertsIcon />,
         },
       ],
     },
   };
 
   // 4. Define the routes
-  const routeElements = [{ path: '/', element: <HomePage /> }];
+  const routeElements = [
+    { path: '/', element: <MonitorPage /> },
+    { path: '/alerts', element: <AlertsPage /> },
+  ];
 
   return (
     <>
