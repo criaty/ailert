@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { enqueueSnackbar } from 'notistack';
 import {
   AppBar,
   Button,
@@ -14,6 +15,9 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import { Clear as ClearIcon } from '@mui/icons-material';
 
 import { useIsMobile } from '@blockium/ui';
+
+import { getFunctions } from '@blockium/firebase';
+import { httpsCallable } from 'firebase/functions';
 
 import { Alert } from '@ailert/model-types';
 
@@ -49,8 +53,30 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
     return false;
   };
 
-  const onSaveAlert = () => {
-    // TODO
+  const onSaveAlert = async () => {
+    const addAlert = httpsCallable(getFunctions(), 'addAlert');
+    try {
+      const newAlert: Alert = {
+        title,
+        description,
+        contextToWatch,
+        outputMessage,
+        webhookUrl,
+        webhookKey,
+        imageUrl: '',
+      };
+      // TODO: Add image
+
+      await addAlert(newAlert);
+
+      // TODO: Add alert to the user's alerts collection = AlertProvider
+      enqueueSnackbar(t('ui:success.onAlertAdd'));
+      onClose();
+      //
+    } catch (error) {
+      console.log(error);
+      enqueueSnackbar(t('ui:error.onAlertAdd'), { variant: 'error' });
+    }
   };
 
   const getEndAdornment = (

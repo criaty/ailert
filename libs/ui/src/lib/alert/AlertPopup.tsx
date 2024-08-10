@@ -50,7 +50,7 @@ export const AlertPopup = () => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      doc(getFirestore(), `users/${customer.id}/alerts`, 'last'),
+      doc(getFirestore(), `users/${customer.id}/alertData`, 'last'),
       (doc) => {
         const alertData = doc.data() as AlertData;
         alertData && alertData.risk !== AlertRisk.LOW && handleOpen(alertData);

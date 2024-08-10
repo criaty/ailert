@@ -75,7 +75,7 @@ export const Camera: React.FC<CameraProps> = ({
           //
         } catch (error) {
           console.log(error);
-          enqueueSnackbar(t('ui:error.onAlertAdd'), { variant: 'error' });
+          enqueueSnackbar(t('ui:error.onAlertDataAdd'), { variant: 'error' });
         }
 
         //
