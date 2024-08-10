@@ -54,5 +54,6 @@
   "error.onAlertsGet": "Error getting alerts.",
   "error.onAlertDelete": "Error deleting alert.",
   "dialog.deleteAlert.title": "Delete Alert",
-  "dialog.deleteAlert.message": "Are you sure you want to delete the alert \"{{title}}\"?"
+  "dialog.deleteAlert.message": "Are you sure you want to delete the alert \"{{title}}\"?",
+  "label.camera": "Camera"
 }

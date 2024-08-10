@@ -1,7 +1,15 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { enqueueSnackbar } from 'notistack';
-import { Button, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import { getFunctions } from '@blockium/firebase';
 import { httpsCallable } from 'firebase/functions';
@@ -99,19 +107,63 @@ export const Camera: React.FC<CameraProps> = ({
     onCapture(image64.split(',')[1]);
   }, [height, width, onCapture]);
 
+  const [currCamera, setCurrCamera] = useState('');
+  const [cameras, setCameras] = useState<{ camId: string; camName: string }[]>(
+    [],
+  );
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: false })
-      .then((stream) => {
-        if (!videoRef.current) return;
-        const video = videoRef.current;
-        video.srcObject = stream;
-        // video.play();
-      });
+    let count = 1;
+    const cameras: { camId: string; camName: string }[] = [];
+    navigator.mediaDevices.enumerateDevices().then((mediaDevices) => {
+      for (const mediaDevice of mediaDevices) {
+        if (mediaDevice.kind === 'videoinput') {
+          let camName = mediaDevice.label || `Camera ${count++}`;
+          // Remove (..) at end of the camName
+          const match = camName.match(/\((.*)\)/);
+          if (match) {
+            camName = camName.replace(match[0], '').trim();
+          }
+          cameras.push({ camId: mediaDevice.deviceId, camName });
+        }
+      }
+      setCameras(cameras);
+      cameras.length > 0 && setCurrCamera(cameras[0].camId);
+    });
+  }, []);
+
+  function stopMediaTracks(stream: MediaStream) {
+    stream.getTracks().forEach((track) => {
+      track.stop();
+    });
+  }
+
+  useEffect(() => {
+    if (videoRef.current?.srcObject) {
+      stopMediaTracks(videoRef.current?.srcObject as MediaStream);
+    }
+
+    const videoConstraints: {
+      facingMode?: string;
+      deviceId?: { exact: string };
+    } = {};
+    if (!currCamera) {
+      videoConstraints.facingMode = 'environment';
+    } else {
+      videoConstraints.deviceId = { exact: currCamera };
+    }
+    const constraints = {
+      video: videoConstraints,
+      audio: false,
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      if (!videoRef.current) return;
+      videoRef.current.srcObject = stream;
+    });
 
     return () => stopCapture();
     //
-  }, [updateInterval]);
+  }, [currCamera, updateInterval]);
 
   const startCapture = () => {
     setStarted(true);
@@ -135,6 +187,24 @@ export const Camera: React.FC<CameraProps> = ({
       <Typography gutterBottom variant="h5" component="div">
         {alert.title}
       </Typography>
+      <FormControl fullWidth>
+        <InputLabel id="label-camera" required>
+          {t('ui:label.camera')}
+        </InputLabel>
+        <Select
+          labelId="label-camera"
+          id="camera"
+          value={currCamera}
+          label={t('ui:label.camera')}
+          onChange={(e) => setCurrCamera(e.target.value)}
+        >
+          {cameras.map((cam) => (
+            <MenuItem key={cam.camId} value={cam.camId}>
+              {cam.camName}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <video
         ref={videoRef}
         id="video"

@@ -54,5 +54,6 @@
   "error.onAlertsGet": "Erro ao obter alertas.",
   "error.onAlertDelete": "Erro ao excluir alerta.",
   "dialog.deleteAlert.title": "Excluir Alerta",
-  "dialog.deleteAlert.message": "Tem certeza que deseja excluir o alerta \"{{title}}\"?"
+  "dialog.deleteAlert.message": "Tem certeza que deseja excluir o alerta \"{{title}}\"?",
+  "label.camera": "Câmera"
 }
