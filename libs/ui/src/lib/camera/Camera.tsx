@@ -218,7 +218,7 @@ export const Camera: React.FC<CameraProps> = ({
         </Button>
       )}
       {started && (
-        <Button variant="contained" onClick={stopCapture}>
+        <Button variant="contained" onClick={stopCapture} color="error">
           {t('ui:button.stop')}
         </Button>
       )}
