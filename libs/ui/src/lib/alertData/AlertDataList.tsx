@@ -50,6 +50,12 @@ export const AlertDataList = () => {
           <AlertDataCard key={alertData.id} alertData={alertData} />
         ))}
       </Box>
+      {/* Show a message when there is no alert data yet */}
+      {alertData.length === 0 && (
+        <Typography variant="body1" sx={{ mt: 4 }}>
+          {t('ui:alertData-empty-list-message')}
+        </Typography>
+      )}
     </>
   );
 };

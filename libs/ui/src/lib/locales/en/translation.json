@@ -60,5 +60,6 @@
   "label.camera": "Camera",
   "alertData-list-title": "Alert Occurrences",
   "alertData-list-message": "Showing the last 50 occurrences.",
+  "alertData-empty-list-message": "No alert occurrences at the moment...",
   "error.onAlertDataGet": "Error getting alert data."
 }

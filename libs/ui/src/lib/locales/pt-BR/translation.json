@@ -59,6 +59,6 @@
   "dialog.deleteAlert.message": "Tem certeza que deseja excluir o alerta \"{{title}}\"?",
   "label.camera": "Câmera",
   "alertData-list-title": "Ocorrências de Alertas",
-  "alertData-list-message": "Mostrando as 50 últimas ocorrências.",
+  "alertData-empty-list-message": "Nenhuma ocorrência de alerta no momento...",
   "error.onAlertDataGet": "Erro ao obter dados de alerta."
 }
