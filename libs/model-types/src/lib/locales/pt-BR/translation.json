@@ -8,11 +8,11 @@
   "making_mess_alert_context_watch": "Animal fazendo bagunça",
   "making_mess_alert_output_message": "Descreva a bagunça que o animal está fazendo",
   "elder_fall_alert_title": "Queda de Idoso",
-  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A resposta descreve a situação do idoso. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
+  "elder_fall_alert_description": "Este alerta monitora um idoso se levantando da cama com risco de queda. A resposta descreve a situação do idoso. Um webhook também é chamado enviando a resposta obtida.",
   "elder_fall_alert_context_watch": "Idoso se levantando da cama com risco de queda",
   "elder_fall_alert_output_message": "Descreva a situação do idoso",
   "happy_person_alert_title": "Pessoa Feliz",
-  "happy_person_alert_description": "Este alerta monitora pessoas que estejam felizes. A resposta descreve o nível de felicidade. Um webhook também é chamado enviando a resposta obtida. Você pode monitorar isso em https://ailert-viewer.criaty.com.",
+  "happy_person_alert_description": "Este alerta monitora pessoas que estejam felizes. A resposta descreve o nível de felicidade. Um webhook também é chamado enviando a resposta obtida.",
   "happy_person_alert_context_watch": "Uma ou mais pessoas felizes. Se as pessoas estiverem moderadamente felizes, o risco é médio. Se as pessoas estiverem muito felizes, o risco é alto.",
   "happy_person_alert_output_message": "Descreva a situação das pessoas. Adicione \"UM DIA FELIZ!\" no início se o risco for alto"
 }
