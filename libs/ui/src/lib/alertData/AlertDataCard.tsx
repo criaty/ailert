@@ -44,11 +44,16 @@ export const AlertDataCard: React.FC<AlertDataCardProps> = ({
           alt={title}
         />
         <CardContent sx={{ height: '180px' }}>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            color="grey.900"
+          >
             {title}
           </Typography>
           <Box height="100%" overflow="auto">
-            <Typography variant="body2" color="text.primary">
+            <Typography variant="body2" color="grey.900">
               {message}
             </Typography>
           </Box>

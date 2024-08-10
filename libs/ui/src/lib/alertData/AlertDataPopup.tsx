@@ -104,7 +104,7 @@ export const AlertDataPopup = () => {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button color="inherit" onClick={handleClose}>
+          <Button onClick={handleClose} sx={{ color: 'black' }}>
             {t('ui:button.close')}
           </Button>
         </DialogActions>
