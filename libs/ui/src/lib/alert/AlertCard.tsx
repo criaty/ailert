@@ -79,16 +79,16 @@ export const AlertCard: React.FC<AlertCardProps> = ({
             </Box>
           </CardContent>
           <CardActions>
-            {!alert.isDefault && (
-              <Button onClick={onEditAlert} size="small">
-                {t('ui:button.edit')}
-              </Button>
-            )}
-            {!alert.isDefault && (
-              <Button onClick={onDeleteAlert} size="small">
-                {t('ui:button.delete')}
-              </Button>
-            )}
+            <Button onClick={onEditAlert} size="small">
+              {t('ui:button.edit')}
+            </Button>
+            <Button
+              onClick={onDeleteAlert}
+              size="small"
+              disabled={alert.isDefault}
+            >
+              {t('ui:button.delete')}
+            </Button>
           </CardActions>
         </Card>
       </motion.div>

@@ -29,6 +29,7 @@ export interface AlertData {
 
 // Alert for a child in danger
 export const CHILD_IN_DANGER_ALERT: Alert = {
+  id: 'default2',
   title: 'model-types:autistic_child_alert_title',
   description: 'model-types:autistic_child_alert_description',
   imageUrl: '/images/autistic-child-alert.webp',
@@ -39,6 +40,7 @@ export const CHILD_IN_DANGER_ALERT: Alert = {
 
 // Alert for an animal making a mess with voice synthesis
 export const ANIMAL_MAKING_MESS_ALERT: Alert = {
+  id: 'default3',
   title: 'model-types:making_mess_alert_title',
   description: 'model-types:making_mess_alert_description',
   imageUrl: '/images/animal-causing-mess-alert.webp',
@@ -50,6 +52,7 @@ export const ANIMAL_MAKING_MESS_ALERT: Alert = {
 
 // Alert for an elder in risk to fall with webhookUrl call
 export const ELDER_FALL_ALERT: Alert = {
+  id: 'default4',
   title: 'model-types:elder_fall_alert_title',
   description: 'model-types:elder_fall_alert_description',
   imageUrl: '/images/elder-fall-alert.webp',
@@ -63,6 +66,7 @@ export const ELDER_FALL_ALERT: Alert = {
 
 // Alert for happy persons with webhookUrl call
 export const HAPPY_PERSON_ALERT: Alert = {
+  id: 'default1',
   title: 'model-types:happy_person_alert_title',
   description: 'model-types:happy_person_alert_description',
   imageUrl: '/images/happy-persons-alert.webp',

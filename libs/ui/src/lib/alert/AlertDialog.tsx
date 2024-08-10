@@ -55,6 +55,15 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
     return false;
   };
 
+  const clearFields = () => {
+    setTitle('');
+    setDescription('');
+    setContextToWatch('');
+    setOutputMessage('');
+    setWebhookUrl('');
+    setWebhookKey('');
+  };
+
   const onSaveAlert = async () => {
     const addAlert = httpsCallable(getFunctions(), 'addAlert');
     try {
@@ -74,6 +83,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
       // Add alert to the user's AlertProvider
       alertList.unshift(newAlert);
       enqueueSnackbar(t('ui:success.onAlertAdd'));
+      clearFields();
       onClose();
       //
     } catch (error) {
