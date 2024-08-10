@@ -20,6 +20,7 @@ export enum AlertRisk {
 
 export interface AlertData {
   id?: string;
+  title: string;
   risk: AlertRisk;
   message: string;
   image64: string;

@@ -46,16 +46,9 @@ export const Camera: React.FC<CameraProps> = ({
         // Do not add low risk alerts to the database
         if (alertData.risk === AlertRisk.LOW) return;
 
-        // TODO: Show a popup message if risk is medium(yellow) or high(red)
-        // If alert.actionType === 'display_text'
-        // If alert.outputType === 'json' get the risk and message fields
-        // If no risk field uses a default color
-        // If no message field uses a default message
-        // If alert.outputType === 'text' use the output as the message
-
         const addAlertData = httpsCallable(getFunctions(), 'addAlertData');
         try {
-          await addAlertData({ ...alertData, image64 });
+          await addAlertData({ ...alertData, title: alert.title, image64 });
 
           // If webhook call the webhook with the image64 and the alert data
           if (alert.webhookUrl) {

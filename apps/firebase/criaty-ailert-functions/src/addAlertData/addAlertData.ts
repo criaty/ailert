@@ -10,9 +10,9 @@ export const addAlertData = onCall(
     const userId = await getUserId(request.auth);
 
     // Get data passed from the client.
-    const { risk, message, image64 } = request.data;
+    const { risk, message, title, image64 } = request.data;
 
-    const alertData = { risk, message, image64 } as AlertData;
+    const alertData = { risk, message, title, image64 } as AlertData;
     // Add alert data to Firestore
     await addAlertDataDB(userId, alertData);
 
