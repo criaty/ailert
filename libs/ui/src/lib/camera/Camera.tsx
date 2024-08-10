@@ -187,7 +187,7 @@ export const Camera: React.FC<CameraProps> = ({
       <Typography gutterBottom variant="h5" component="div">
         {alert.title}
       </Typography>
-      <FormControl fullWidth>
+      <FormControl sx={{ minWidth: 300 }}>
         <InputLabel id="label-camera" required>
           {t('ui:label.camera')}
         </InputLabel>
@@ -203,6 +203,8 @@ export const Camera: React.FC<CameraProps> = ({
               {cam.camName}
             </MenuItem>
           ))}
+          <MenuItem value="drone">Drone Cam</MenuItem>
+          <MenuItem value="wifi">WiFi Cam 1</MenuItem>
         </Select>
       </FormControl>
       <video
