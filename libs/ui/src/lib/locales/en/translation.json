@@ -50,5 +50,6 @@
   "label.webhookUrl": "Webhook URL",
   "placeholder.webhookUrl": "Enter the Webhook URL to send the alert analysis",
   "label.webhookKey": "Webhook Key",
-  "placeholder.webhookKey": "Enter the Webhook key"
+  "placeholder.webhookKey": "Enter the Webhook key",
+  "error.onAlertsGet": "Error getting alerts."
 }

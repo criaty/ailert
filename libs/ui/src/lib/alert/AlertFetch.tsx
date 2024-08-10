@@ -4,8 +4,8 @@ import { useGetAlerts } from './useGetAlerts';
 export const AlertFetch: React.FC<PropsWithChildren> = ({ children }) => {
   const { getAlerts } = useGetAlerts();
 
+  // Get user defined alerts once.
   useEffect(() => {
-    // Get user defined alerts.
     getAlerts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

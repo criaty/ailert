@@ -1,5 +1,5 @@
 import { onCall } from 'firebase-functions/v2/https';
-import { logger } from 'firebase-functions/v2';
+// import { logger } from 'firebase-functions/v2';
 import { getAlertsDB, getUserId } from '../utils';
 
 export const getAlerts = onCall(
@@ -7,7 +7,6 @@ export const getAlerts = onCall(
   { cors: true, concurrency: 80 },
   async (request) => {
     const userId = await getUserId(request.auth);
-    logger.info('userId', userId);
 
     // Get alerts from Firestore
     return await getAlertsDB(userId);

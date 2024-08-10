@@ -50,5 +50,6 @@
   "label.webhookUrl": "URL do Webhook",
   "placeholder.webhookUrl": "Insira a URL do Webhook para enviar a análise dos alertas",
   "label.webhookKey": "Chave do Webhook",
-  "placeholder.webhookKey": "Insira a chave do Webhook"
+  "placeholder.webhookKey": "Insira a chave do Webhook",
+  "error.onAlertsGet": "Erro ao obter alertas."
 }
