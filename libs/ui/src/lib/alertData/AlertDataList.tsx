@@ -12,7 +12,7 @@ import { AlertDataCard } from './AlertDataCard';
 export const AlertDataList = () => {
   const { t } = useTranslation();
 
-  const [alertData, setAlertData] = useState<AlertData[]>([]);
+  const [alertData, setAlertData] = useState<AlertData[] | undefined>();
 
   // Get Alert Data
   useEffect(() => {
@@ -46,12 +46,12 @@ export const AlertDataList = () => {
         }}
         py={0}
       >
-        {alertData.map((alertData) => (
+        {alertData?.map((alertData) => (
           <AlertDataCard key={alertData.id} alertData={alertData} />
         ))}
       </Box>
       {/* Show a message when there is no alert data yet */}
-      {alertData.length === 0 && (
+      {alertData?.length === 0 && (
         <Typography variant="body1" sx={{ mt: 4 }}>
           {t('ui:alertData-empty-list-message')}
         </Typography>
