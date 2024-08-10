@@ -1,5 +1,5 @@
 import { onRequest } from 'firebase-functions/v2/https';
-// import { logger } from 'firebase-functions/v2';
+import { logger } from 'firebase-functions/v2';
 
 const DEFAULT_HOOK_KEY = 'criaty-ailert';
 
@@ -17,20 +17,19 @@ const validateParams = (request: any, response: any) => {
   return true;
 };
 
-export const happyPersonAlert = onRequest(
+export const webhookExample = onRequest(
   // { cors: [/criaty\.com$/], concurrency: 80 },
   { cors: true, concurrency: 80 },
   async (request, response) => {
     if (!validateParams(request, response)) return;
 
-    // TODO: Should not receive userId
     try {
+      // This is an example of how to get the data from the request
       // const { risk, message, image64 } = request.body;
-      // TODO: Save the alert data to /webhooks/happyPersonAlert/alerts
 
-      // logger.info('happyPersonAlert webhook called');
+      logger.info('webhook called');
 
-      response.status(200).send('happyPersonAlert webhook called');
+      response.status(200).send('webhook called');
     } catch (error) {
       console.log(error);
       response.status(424).send('There was an error on webhook call');

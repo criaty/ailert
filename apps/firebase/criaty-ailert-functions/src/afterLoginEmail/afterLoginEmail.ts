@@ -50,7 +50,7 @@ export const afterLoginEmail = onRequest(
       await updateUserDB(user.id, {
         authId: authUser.uid,
         // Used to create the field to search:
-        searchName: userName.toLowerCase(), // TODO: Can be removed in future.
+        searchName: userName.toLowerCase(),
       });
 
       const { id: userId, name, displayName, email, phone } = user;

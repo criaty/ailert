@@ -59,7 +59,7 @@ export const ELDER_FALL_ALERT: Alert = {
   contextToWatch: 'model-types:elder_fall_alert_context_watch',
   outputMessage: 'model-types:elder_fall_alert_output_message',
   webhookUrl:
-    'https://us-central1-criaty-ailert.cloudfunctions.net/elderFallAlert',
+    'https://us-central1-criaty-ailert.cloudfunctions.net/webhookExample',
   webhookKey: 'criaty-ailert',
   isDefault: true,
 };
@@ -72,10 +72,9 @@ export const HAPPY_PERSON_ALERT: Alert = {
   imageUrl: '/images/happy-persons-alert.webp',
   contextToWatch: 'model-types:happy_person_alert_context_watch',
   outputMessage: 'model-types:happy_person_alert_output_message',
-  webhookUrl:
-    'http://localhost:5001/criaty-ailert/us-central1/happyPersonAlert',
+  webhookUrl: 'http://localhost:5001/criaty-ailert/us-central1/webhookExample',
   // webhookUrl:
-  //   'https://us-central1-criaty-ailert.cloudfunctions.net/happyPersonAlert',
+  //   'https://us-central1-criaty-ailert.cloudfunctions.net/webhookExample',
   webhookKey: 'criaty-ailert',
   isDefault: true,
 };

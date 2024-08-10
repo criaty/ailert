@@ -11,8 +11,6 @@ import { AlertContext } from '../alert';
 import { AlertData, AlertRisk } from '@ailert/model-types';
 
 // TODO: 4. Get front or back camera if any
-// TODO: Adjust camera width and height to the screen size
-// TODO: Test with different qualities
 
 type CameraProps = {
   width?: number;
