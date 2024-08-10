@@ -25,7 +25,6 @@ export const useGetAlerts = () => {
           contextToWatch: t(alert.contextToWatch),
           outputMessage: t(alert.outputMessage),
         }));
-        console.log([...alerts, ...defaultAlerts]);
         setAlertList([...alerts, ...defaultAlerts]);
       })
       .catch((error) => {

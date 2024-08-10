@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { enqueueSnackbar } from 'notistack';
 import {
@@ -20,6 +20,7 @@ import { getFunctions } from '@blockium/firebase';
 import { httpsCallable } from 'firebase/functions';
 
 import { Alert } from '@ailert/model-types';
+import { AlertContext } from './AlertContext';
 
 type AlertDialogProps = {
   open: boolean;
@@ -34,6 +35,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
 }) => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
+  const { alertList } = useContext(AlertContext);
 
   // Fields
   const [title, setTitle] = useState(alert.title || '');
@@ -69,7 +71,8 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
 
       await addAlert(newAlert);
 
-      // TODO: Add alert to the user's alerts collection = AlertProvider
+      // Add alert to the user's AlertProvider
+      alertList.unshift(newAlert);
       enqueueSnackbar(t('ui:success.onAlertAdd'));
       onClose();
       //
