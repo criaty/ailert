@@ -16,6 +16,8 @@ import { AlertDialog } from './AlertDialog';
 
 import { getFunctions } from '@blockium/firebase';
 import { httpsCallable } from 'firebase/functions';
+
+import { ConfirmDialog } from '@blockium/ui';
 import { AlertContext } from './AlertContext';
 
 type AlertCardProps = {
@@ -32,6 +34,7 @@ export const AlertCard: React.FC<AlertCardProps> = ({
   const { t } = useTranslation();
   const { title, description, imageUrl } = alert;
   const [openDialog, setOpenDialog] = useState(false);
+  const [openConfirmDelete, setOpenConfirmDelete] = useState(false);
   const { alertList, setAlertList } = useContext(AlertContext);
 
   const onEditAlert = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,8 +43,13 @@ export const AlertCard: React.FC<AlertCardProps> = ({
     setOpenDialog(true);
   };
 
-  const onDeleteAlert = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onDeleteAlert = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
+    setOpenConfirmDelete(true);
+  };
+
+  const handleDeleteConfirmed = async () => {
+    setOpenConfirmDelete(false);
     const deleteAlert = httpsCallable(getFunctions(), 'deleteAlert');
     try {
       await deleteAlert({ alertId: alert.id });
@@ -118,6 +126,14 @@ export const AlertCard: React.FC<AlertCardProps> = ({
         </Card>
       </motion.div>
       <AlertDialog open={openDialog} onClose={onCloseDialog} alert={alert} />
+      <ConfirmDialog
+        open={openConfirmDelete}
+        title={t('ui:dialog.deleteAlert.title')}
+        message={t('ui:dialog.deleteAlert.message', { title: alert.title })}
+        onConfirm={handleDeleteConfirmed}
+        onClose={() => setOpenConfirmDelete(false)}
+        confirmColor="error"
+      />
     </>
   );
 };

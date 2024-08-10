@@ -52,5 +52,7 @@
   "label.webhookKey": "Webhook Key",
   "placeholder.webhookKey": "Enter the Webhook key",
   "error.onAlertsGet": "Error getting alerts.",
-  "error.onAlertDelete": "Error deleting alert."
+  "error.onAlertDelete": "Error deleting alert.",
+  "dialog.deleteAlert.title": "Delete Alert",
+  "dialog.deleteAlert.message": "Are you sure you want to delete the alert \"{{title}}\"?"
 }
