@@ -29,7 +29,7 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const AlertPopup = () => {
+export const AlertDataPopup = () => {
   const theme = useTheme();
   const { t } = useTranslation();
   const [customer] = useCurrentCustomer();
