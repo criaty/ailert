@@ -29,10 +29,7 @@ export const updateAlertDB = async (
   await alertRef.set({ ...alert });
 };
 
-export const deleteAlertDB = async (userId: string, alert: Alert) => {
-  if (!alert.id) return false;
-  db.alerts(userId)
-    .doc(alert.id as string)
-    .delete();
+export const deleteAlertDB = async (userId: string, alertId: string) => {
+  db.alerts(userId).doc(alertId).delete();
   return true;
 };

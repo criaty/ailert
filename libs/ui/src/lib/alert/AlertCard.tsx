@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { enqueueSnackbar } from 'notistack';
 import {
   Box,
   Button,
@@ -12,6 +13,10 @@ import {
 import { motion } from 'framer-motion';
 import { Alert } from '@ailert/model-types';
 import { AlertDialog } from './AlertDialog';
+
+import { getFunctions } from '@blockium/firebase';
+import { httpsCallable } from 'firebase/functions';
+import { AlertContext } from './AlertContext';
 
 type AlertCardProps = {
   alert: Alert;
@@ -27,6 +32,7 @@ export const AlertCard: React.FC<AlertCardProps> = ({
   const { t } = useTranslation();
   const { title, description, imageUrl } = alert;
   const [openDialog, setOpenDialog] = useState(false);
+  const { alertList, setAlertList } = useContext(AlertContext);
 
   const onEditAlert = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -34,9 +40,21 @@ export const AlertCard: React.FC<AlertCardProps> = ({
     setOpenDialog(true);
   };
 
-  const onDeleteAlert = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onDeleteAlert = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    // TODO: Delete the alert
+    const deleteAlert = httpsCallable(getFunctions(), 'deleteAlert');
+    try {
+      await deleteAlert({ alertId: alert.id });
+      // Remove the alert from the list in the context
+      alertList.splice(
+        alertList.findIndex((a) => a.id === alert.id),
+        1,
+      );
+      setAlertList([...alertList]);
+    } catch (error) {
+      console.log(error);
+      enqueueSnackbar(t('ui:error.onAlertDelete'), { variant: 'error' });
+    }
   };
 
   const onCloseDialog = () => {
