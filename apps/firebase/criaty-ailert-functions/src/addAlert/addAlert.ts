@@ -32,9 +32,9 @@ export const addAlert = onCall(
     } as Alert;
 
     // Add alert data to Firestore
-    await addAlertDB(userId, alert);
+    const addedAlert = await addAlertDB(userId, alert);
 
     // logger.info('New Alert added');
-    return { status: 'success' };
+    return { status: 'success', alert: addedAlert };
   },
 );

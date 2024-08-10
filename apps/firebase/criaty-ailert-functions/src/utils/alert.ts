@@ -17,7 +17,7 @@ export const getAlertsDB = async (userId: string) => {
 export const addAlertDB = async (userId: string, alert: Alert) => {
   const newAlert = { ...alert, createdAt: new Date().toISOString() };
   const alertDoc = await db.alerts(userId).add(newAlert);
-  return { id: alertDoc.id, ...newAlert };
+  return { id: alertDoc.id, ...newAlert } as Alert;
 };
 
 export const updateAlertDB = async (

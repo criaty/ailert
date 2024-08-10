@@ -78,10 +78,16 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
       };
       // TODO: Add image
 
-      await addAlert(newAlert);
+      const result = (await addAlert(newAlert)) as unknown as {
+        data: {
+          status: string;
+          alert: Alert;
+        };
+      };
 
       // Add alert to the user's AlertProvider
-      alertList.unshift(newAlert);
+      alertList.unshift(result.data.alert);
+
       enqueueSnackbar(t('ui:success.onAlertAdd'));
       clearFields();
       onClose();

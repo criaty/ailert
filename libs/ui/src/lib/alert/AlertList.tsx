@@ -85,7 +85,7 @@ export const AlertList = () => {
       >
         {alertList.map((alert, index) => (
           <AlertCard
-            key={index}
+            key={alert.id}
             alert={alert}
             onClick={() => onSelectAlert(index)}
           />

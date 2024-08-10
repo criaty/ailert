@@ -78,25 +78,32 @@ export const AlertCard: React.FC<AlertCardProps> = ({
             justifyContent: 'space-between',
           }}
         >
-          {imageUrl && (
+          {imageUrl ? (
             <CardMedia
               component="img"
-              height="160"
+              height="160px"
               image={imageUrl}
               alt={title}
             />
+          ) : (
+            <Box
+              sx={{
+                height: '160px',
+                backgroundColor: 'grey.300',
+              }}
+            />
           )}
-          <CardContent>
+          <CardContent sx={{ height: '220px' }}>
             <Typography gutterBottom variant="h5" component="div">
               {title}
             </Typography>
-            <Box height="110px" overflow="auto">
+            <Box height="100%" overflow="auto">
               <Typography variant="body2" color="text.secondary">
                 {description}
               </Typography>
             </Box>
           </CardContent>
-          <CardActions>
+          <CardActions sx={{ height: '60px' }}>
             <Button onClick={onEditAlert} size="small">
               {t('ui:button.edit')}
             </Button>
