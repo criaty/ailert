@@ -111,7 +111,9 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
   const onAddAlert = async () => {
     const addAlert = httpsCallable(getFunctions(), 'addAlert');
     try {
-      // TODO: Add random image
+      // Select random image
+      const n = Math.floor(Math.random() * 10) + 1;
+      const imageUrl = `/images/image${n}-alert.webp`;
 
       const newAlert: Alert = {
         title,
@@ -120,7 +122,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
         outputMessage,
         webhookUrl,
         webhookKey,
-        imageUrl: '',
+        imageUrl,
       };
 
       const result = (await addAlert(newAlert)) as unknown as {
