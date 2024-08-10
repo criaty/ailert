@@ -1,8 +1,19 @@
 import { Alert } from '@ailert/model-types';
 import { db } from './db';
-import { deleteDoc, doc } from 'firebase/firestore';
 
-// Add alert to user's alerts collection
+export const getAlertsDB = async (userId: string) => {
+  const q = db.alerts(userId).orderBy('createdAt', 'desc');
+  const querySnapshot = await q.get();
+  const alerts = querySnapshot.docs.map((doc) => {
+    const alert: Alert = {
+      ...(doc.data() as Alert),
+      id: doc.id,
+    };
+    return alert;
+  });
+  return alerts;
+};
+
 export const addAlertDB = async (userId: string, alert: Alert) => {
   const newAlert = { ...alert, createdAt: new Date().toISOString() };
   const alertDoc = await db.alerts(userId).add(newAlert);
@@ -19,9 +30,9 @@ export const updateAlertDB = async (
 };
 
 export const deleteAlertDB = async (userId: string, alert: Alert) => {
-  const col = db.alerts(userId);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const alertRef = doc(col as any, alert.id);
-  await deleteDoc(alertRef);
+  if (!alert.id) return false;
+  db.alerts(userId)
+    .doc(alert.id as string)
+    .delete();
   return true;
 };

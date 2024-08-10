@@ -1,29 +1,17 @@
 import { AlertData } from '@ailert/model-types';
 import { db } from './db';
-import { getDocs, orderBy, query, where } from 'firebase/firestore';
 
-export const getAlertDataDB = async (
-  userId: string,
-  startDate: string,
-  endDate: string,
-) => {
-  const q = query(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    db.alertData(userId) as any,
-    orderBy('createdAt', 'asc'),
-    where('createdAt', '>=', startDate),
-    where('createdAt', '<=', endDate),
-  );
-  const querySnapshot = await getDocs(q);
-  return await Promise.all(
-    querySnapshot.docs.map(async (doc) => {
-      const alertData: AlertData = {
-        ...(doc.data() as AlertData),
-        id: doc.id,
-      };
-      return alertData;
-    }),
-  );
+export const getAlertDataDB = async (userId: string) => {
+  const q = db.alertData(userId).orderBy('createdAt', 'desc').limit(50);
+  const querySnapshot = await q.get();
+  const alertData = querySnapshot.docs.map((doc) => {
+    const alertData: AlertData = {
+      ...(doc.data() as AlertData),
+      id: doc.id,
+    };
+    return alertData;
+  });
+  return alertData;
 };
 
 export const addAlertDataDB = async (userId: string, alertData: AlertData) => {

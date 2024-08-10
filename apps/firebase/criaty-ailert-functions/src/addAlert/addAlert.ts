@@ -1,5 +1,5 @@
 import { onCall } from 'firebase-functions/v2/https';
-import { logger } from 'firebase-functions/v2';
+// import { logger } from 'firebase-functions/v2';
 import { addAlertDB, getUserId } from '../utils';
 import { Alert } from '@ailert/model-types';
 
@@ -30,7 +30,6 @@ export const addAlert = onCall(
       webhookUrl,
       webhookKey,
     } as Alert;
-    logger.info(alert);
 
     // Add alert data to Firestore
     await addAlertDB(userId, alert);

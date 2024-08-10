@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-import { Alert, DEFAULT_ALERTS } from '@ailert/model-types';
+import { Alert } from '@ailert/model-types';
 import { AlertCard } from './AlertCard';
 import { AlertContext } from './AlertContext';
 import { AlertDialog } from './AlertDialog';
@@ -11,22 +11,13 @@ import { AlertDialog } from './AlertDialog';
 export const AlertList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { setAlert } = useContext(AlertContext);
+  const { alertList, setAlert } = useContext(AlertContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [currAlert, setCurrAlert] = useState<Alert>({} as Alert);
 
-  // TODO: Add user defined alerts. Create an AlertContext to store them
-  const alerts = DEFAULT_ALERTS.map((alert) => ({
-    ...alert,
-    title: t(alert.title),
-    description: t(alert.description),
-    contextToWatch: t(alert.contextToWatch),
-    outputMessage: t(alert.outputMessage),
-  }));
-
   const onSelectAlert = (alertIndex: number) => {
     // Add selected alert to the context
-    const alert = alerts[alertIndex];
+    const alert = alertList[alertIndex];
     setAlert(alert);
     // Navigate to the camera page
     navigate('/camera');
@@ -92,7 +83,7 @@ export const AlertList = () => {
         }}
         py={0}
       >
-        {alerts.map((alert, index) => (
+        {alertList.map((alert, index) => (
           <AlertCard
             key={index}
             alert={alert}
