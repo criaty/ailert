@@ -55,5 +55,8 @@
   "error.onAlertDelete": "Error deleting alert.",
   "dialog.deleteAlert.title": "Delete Alert",
   "dialog.deleteAlert.message": "Are you sure you want to delete the alert \"{{title}}\"?",
-  "label.camera": "Camera"
+  "label.camera": "Camera",
+  "alertData-list-title": "Alert Occurrences",
+  "alertData-list-message": "Showing the last 50 occurrences.",
+  "error.onAlertDataGet": "Error getting alert data."
 }

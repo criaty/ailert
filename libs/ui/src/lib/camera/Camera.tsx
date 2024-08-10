@@ -18,8 +18,6 @@ import { ModelContext, useImageUpdate } from '../gemini';
 import { AlertContext } from '../alert';
 import { AlertData, AlertRisk } from '@ailert/model-types';
 
-// TODO: 4. Get front or back camera if any
-
 type CameraProps = {
   width?: number;
   height?: number;

@@ -8,6 +8,7 @@ addResourceBundles([
 ]);
 
 export * from './lib/alert';
+export * from './lib/alertData';
 export * from './lib/camera';
 export * from './lib/contents';
 export * from './lib/forms';
