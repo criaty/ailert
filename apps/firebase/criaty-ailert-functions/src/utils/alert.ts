@@ -20,13 +20,11 @@ export const addAlertDB = async (userId: string, alert: Alert) => {
   return { id: alertDoc.id, ...newAlert } as Alert;
 };
 
-export const updateAlertDB = async (
-  userId: string,
-  alertId: string,
-  alert: Alert,
-) => {
-  const alertRef = await db.alerts(userId).doc(alertId);
-  await alertRef.set({ ...alert });
+export const updateAlertDB = async (userId: string, alert: Alert) => {
+  const alertRef = await db.alerts(userId).doc(alert.id as string);
+  const updAlert: Alert = { ...alert, updatedAt: new Date().toISOString() };
+  delete updAlert.id;
+  await alertRef.set({ ...updAlert });
 };
 
 export const deleteAlertDB = async (userId: string, alertId: string) => {

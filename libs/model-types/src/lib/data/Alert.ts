@@ -10,6 +10,7 @@ export interface Alert {
   webhookKey?: string;
   isDefault?: boolean;
   createdAt?: string;
+  updatedAt?: string;
 }
 
 export enum AlertRisk {

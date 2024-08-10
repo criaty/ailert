@@ -35,7 +35,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
 }) => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
-  const { alertList } = useContext(AlertContext);
+  const { alertList, setAlertList } = useContext(AlertContext);
 
   // Fields
   const [title, setTitle] = useState(alert.title || '');
@@ -65,8 +65,54 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
   };
 
   const onSaveAlert = async () => {
+    if (alert.id) {
+      // Edit alert
+      await onUpdateAlert();
+    } else {
+      // Add alert
+      await onAddAlert();
+    }
+  };
+
+  const onUpdateAlert = async () => {
+    const updateAlert = httpsCallable(getFunctions(), 'updateAlert');
+    try {
+      const updAlert: Alert = {
+        id: alert.id,
+        title,
+        description,
+        contextToWatch,
+        outputMessage,
+        webhookUrl,
+        webhookKey,
+        imageUrl: alert.imageUrl,
+        createdAt: alert.createdAt,
+      };
+
+      await updateAlert(updAlert);
+
+      // Update alert in the user's AlertProvider
+      alertList.splice(
+        alertList.findIndex((a) => a.id === alert.id),
+        1,
+        updAlert,
+      );
+      setAlertList([...alertList]);
+
+      enqueueSnackbar(t('ui:success.onAlertUpdate'));
+      onClose();
+      //
+    } catch (error) {
+      console.log(error);
+      enqueueSnackbar(t('ui:error.onAlertUpdate'), { variant: 'error' });
+    }
+  };
+
+  const onAddAlert = async () => {
     const addAlert = httpsCallable(getFunctions(), 'addAlert');
     try {
+      // TODO: Add random image
+
       const newAlert: Alert = {
         title,
         description,
@@ -76,7 +122,6 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
         webhookKey,
         imageUrl: '',
       };
-      // TODO: Add image
 
       const result = (await addAlert(newAlert)) as unknown as {
         data: {
