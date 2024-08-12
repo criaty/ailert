@@ -201,8 +201,6 @@ export const Camera: React.FC<CameraProps> = ({
               {cam.camName}
             </MenuItem>
           ))}
-          <MenuItem value="drone">Drone Cam</MenuItem>
-          <MenuItem value="wifi">WiFi Cam 1</MenuItem>
         </Select>
       </FormControl>
       <video
